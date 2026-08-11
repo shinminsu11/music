@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>천지인 밀기 자판 (기호판 + 클립보드)</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+            margin: 0;
+            user-select: none;
+        }
+        .container {
+            background: #2c2c2c;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            width: 360px;
+            box-sizing: border-box;
+        }
+        #output {
+            width: 100%;
+            height: 60px;
+            font-size: 24px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            text-align: left;
+            background-color: #383838;
+            color: white;
+            box-sizing: border-box;
+        }
+        /* 패널 공통 그리드 스타일 */
+        .keyboard, .symbol-board, .clipboard-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+        /* 숨김 처리 */
+        .hidden {
+            display: none !important;
+        }
+        /* 개별 키 디자인 */
+        .key {
+            height: 65px;
+            background: #424242;
+            border: 1px solid #2e2e2e;
+            border-radius: 6px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background 0.1s;
+        }
+        .key:active {
+            background: #616161;
+        }
+        /* 키 우측 상단 숫자/기호 */
+        .key-num {
+            position: absolute;
+            top: 4px;
+            right: 6px;
+            font-size: 11px;
+            color: #9e9e9e;
+            font-weight: normal;
+        }
+        /* 글자 색상 */
+        .text-red { color: #ff5252; }
+        .text-yellow { color: #ffd740; }
+        .text-green { color: #69f0ae; }
+        
+        /* 점(•) 키 스타일 */
+        .key.dot-key {
+            font-size: 36px;
+            background: #363636;
+            border: 1px dashed #777;
+        }
+        /* 기호판 및 클립보드 특화 버튼 스타일 */
+        .sub-key {
+            background: #334155;
+            color: #38bdf8;
+            font-size: 18px;
+        }
+        .sub-key:active {
+            background: #475569;
+        }
+        /* 클립보드 아이템 칸 (넓게 쓰기 위함) */
+        .clip-item {
+            grid-column: span 2;
+            font-size: 14px;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 5px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <input type="text" id="output" placeholder="자판을 테스트해보세요" autofocus>
+        
+        <!-- 1. 메인 한글/밀기 자판 영역 -->
+        <div class="keyboard" id="mainKeyboard">
+            <!-- 1행 -->
+            <div class="key" onclick="typeKey('○')"><span class="text-red">○</span>ㅎ<span class="key-num">1</span></div>
+            <div class="key" onclick="typeKey('ㄱ')">ㄱㅋ<span class="key-num">2</span></div>
+            <div class="key" onclick="typeKey('|')">|<span class="key-num">3</span></div>
+            <div class="key" style="background: #333;" onclick="backspaceKey()">⌫</div>
+
+            <!-- 2행 -->
+            <div class="key" onclick="typeKey('ㄴ')"><span class="text-yellow">ㄴ</span>ㄹ<span class="key-num">4</span></div>
+            <div class="key" onclick="typeKey('ㄷ')">ㄷㅌ<span class="key-num">5</span></div>
+            <!-- 점(•) 키 (동서남북 밀기 적용) -->
+            <div class="key dot-key" id="dotKey">•<span class="key-num">6</span></div>
+            <!-- 기호판 열기 버튼 -->
+            <div class="key" style="background: #333;" onclick="switchBoard('symbol')">⚙️</div>
+
+            <!-- 3행 -->
+            <div class="key" onclick="typeKey('ㅅ')"><span class="text-green">ㅅ</span><span class="key-num">7</span></div>
+            <div class="key" onclick="typeKey('ㅈ')">ㅈㅊ<span class="key-num">8</span></div>
+            <div class="key" onclick="typeKey('—')">—<span class="key-num">9</span></div>
+            <div class="key" onclick="typeKey('A')">A</div>
+
+            <!-- 4행 -->
+            <div class="key" onclick="typeKey('□')">□<span class="key-num">*</span></div>
+            <div class="key" onclick="typeKey('ㅂ')">ㅂㅍ<span class="key-num">0</span></div>
+            <!-- 클립보드 판 열기 버튼 -->
+            <div class="key" style="background: #333; color: #38bdf8;" onclick="switchBoard('clipboard')">📋</div>
+            <div class="key" onclick="typeKey(' ')">␣</div>
+        </div>
+
+        <!-- 2. 기호판 영역 -->
+        <div class="symbol-board hidden" id="symbolBoard">
+            <div class="key sub-key" onclick="typeKey('!')">!</div>
+            <div class="key sub-key" onclick="typeKey('@')">@</div>
+            <div class="key sub-key" onclick="typeKey('#')">#</div>
+            <div class="key sub-key" onclick="typeKey('$')">$</div>
+
+            <div class="key sub-key" onclick="typeKey('%')">%</div>
+            <div class="key sub-key" onclick="typeKey('^')">^</div>
+            <div class="key sub-key" onclick="typeKey('&')">&</div>
+            <div class="key sub-key" onclick="typeKey('*')">*</div>
+
+            <div class="key sub-key" onclick="typeKey('(')">(</div>
+            <div class="key sub-key" onclick="typeKey(')')">)</div>
+            <div class="key sub-key" onclick="typeKey('+')">+</div>
+            <div class="key sub-key" onclick="typeKey('-')">-</div>
+
+            <div class="key" style="background: #4a5568;" onclick="backspaceKey()">⌫</div>
+            <div class="key sub-key" onclick="typeKey('?')">?</div>
+            <div class="key sub-key" onclick="typeKey('=')">=</div>
+            <div class="key" style="background: #1e293b; color: #f87171;" onclick="switchBoard('main')">돌아가기</div>
+        </div>
+
+        <!-- 3. 클립보드 판 영역 -->
+        <div class="clipboard-board hidden" id="clipboardBoard">
+            <div class="key clip-item" onclick="typeKey('안녕하세요! 반갑습니다.')">안녕하세요! 반갑습니다.</div>
+            <div class="key clip-item" onclick="typeKey('https://github.com')">깃허브 주소 복사</div>
+            
+            <div class="key clip-item" onclick="typeKey('대한민국 서울')">대한민국 서울</div>
+            <div class="key clip-item" onclick="addClipboardText()">+ 문구 추가하기</div>
+
+            <div class="key" style="background: #4a5568;" onclick="backspaceKey()">⌫</div>
+            <div class="key" style="background: #1e293b; color: #f87171; grid-column: span 3;" onclick="switchBoard('main')">자판으로 돌아가기</div>
+        </div>
+    </div>
+
+    <script>
+        const dotKey = document.getElementById('dotKey');
+        const output = document.getElementById('output');
+        const mainKeyboard = document.getElementById('mainKeyboard');
+        const symbolBoard = document.getElementById('symbolBoard');
+        const clipboardBoard = document.getElementById('clipboardBoard');
+
+        let startX = 0;
+        let startY = 0;
+
+        // 점 키 터치 시작
+        dotKey.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            dotKey.style.background = '#555';
+        });
+
+        // 점 키 터치 종료 (동서남북 밀기 모음 입력)
+        dotKey.addEventListener('touchend', (e) => {
+            dotKey.style.background = '#363636';
+
+            let endX = e.changedTouches[0].clientX;
+            let endY = e.changedTouches[0].clientY;
+
+            let diffX = endX - startX;
+            let diffY = endY - startY;
+            let threshold = 30;
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0) { output.value += 'ㅏ'; } 
+                    else { output.value += 'ㅓ'; }
+                }
+            } else {
+                if (Math.abs(diffY) > threshold) {
+                    if (diffY > 0) { output.value += 'ㅜ'; } 
+                    else { output.value += 'ㅗ'; }
+                }
+            }
+            output.focus();
+        });
+
+        // 화면(판) 전환 함수 ('main', 'symbol', 'clipboard')
+        function switchBoard(type) {
+            mainKeyboard.classList.add('hidden');
+            symbolBoard.classList.add('hidden');
+            clipboardBoard.classList.add('hidden');
+
+            if (type === 'main') {
+                mainKeyboard.classList.remove('hidden');
+            } else if (type === 'symbol') {
+                symbolBoard.classList.remove('hidden');
+            } else if (type === 'clipboard') {
+                clipboardBoard.classList.remove('hidden');
+            }
+            output.focus();
+        }
+
+        // 일반 버튼 및 기호/클립보드 내용 클릭 시 입력
+        function typeKey(char) {
+            output.value += char;
+            output.focus();
+        }
+
+        // 지우기 버튼
+        function backspaceKey() {
+            output.value = output.value.slice(0, -1);
+            output.focus();
+        }
+
+        // 클립보드에 새 문구를 추가하는 기능 예시
+        function addClipboardText() {
+            let text = prompt("저장할 문구를 입력하세요:");
+            if (text) {
+                const clipBoardDiv = document.getElementById('clipboardBoard');
+                const newBtn = document.createElement('div');
+                newBtn.className = 'key clip-item';
+                newBtn.innerText = text;
+                newBtn.onclick = () => typeKey(text);
+                // 돌아가기 버튼 바로 앞에 추가
+                clipBoardDiv.insertBefore(newBtn, clipBoardDiv.lastElementChild.previousSibling);
+            }
+        }
+    </script>
+
+</body>
+</html>
