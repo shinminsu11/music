@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ㅡ태극 음악 2곡</title>
+
+    <style>
+        body {
+            background-color: #121214;
+            color: #e4e4e7;
+            font-family: 'Malgun Gothic', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .image-container {
+            margin: 20px 0;
+            background: #1a1a1e;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin: 30px 0 20px 0;
+            color: #ffffff;
+        }
+
+        .playlist {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .track-btn {
+            flex: 1;
+            background-color: #26262b;
+            color: #a1a1aa;
+            border: none;
+            padding: 18px 10px;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .track-btn.active {
+            background-color: #3b82f6;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .now-playing {
+            background-color: #1a1a1e;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: #a1a1aa;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .now-playing span {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        audio {
+            width: 100%;
+            border-radius: 30px;
+            background: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .lyrics-container {
+            background-color: #1a1a1e;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: left;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #d4d4d8;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="image-container">
+        <img src="taegeuk.png" alt="복희 여와 타이틀 그림">
+    </div>
+
+    <h1>태극 음악 2곡</h1>
+
+    <!-- 곡 선택 버튼 -->
+    <div class="playlist">
+        <button class="track-btn active"
+                id="btn-1"
+                onclick="selectTrack(1)">
+            🎵태극문 열려라
+        </button>
+
+        <button class="track-btn"
+                id="btn-2"
+                onclick="selectTrack(2)">
+            🎵태극이 돌아간다
+        </button>
+    </div>
+
+    <!-- 현재 재생 중 -->
+    <div class="now-playing">
+        현재 재생 중 :
+        <span id="current-title">태극문 열려라 </span>
+    </div>
+
+    <!-- 오디오 -->
+    <audio id="audio-player" controls>
+        <source id="audio-source"
+                src="cube1.mp3"
+                type="audio/mpeg">
+
+        브라우저가 오디오 태그를 지원하지 않습니다.
+    </audio>
+
+    <!-- 가사 -->
+    <div class="lyrics-container" id="lyrics-display">
+
+[Verse 1]
+처음엔 아무 말도 없었지
+그저 숨과 떨림뿐
+어둠 속에서 부딪힌 울림
+그중 살아남은 건 단 하나의 리듬
+소리는 흘러, 사라지고 남아
+자연과 맞는 것만 남아
+입 안에서 태어난 작은 우주
+그걸 우린 언어라 불러
+
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Pre-Chorus]
+형태를 만들는 선
+직선과 곡선
+서로 다른 길 위에 서 있지만
+결국 하나를 향해 가
+
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Chorus]
+
+여는 것과 닫는 것 사이
+그 틈에서 태어난 우리
+직선은 말해 “나는 경계”
+곡선은 말해 “나는 흐름”
+둘이 만나 완성되는 순간
+그게 바로 한글의 궤적
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Verse 2]
+모음은 공간의 방향 좌표
+아는 열려 앞으로
+어는 반대로 안으로
+오는 솟는 숨결
+우는 아래로 가라앉는 파도
+
+자음은 경계를 나눔
+기역은 꺾이고, 
+니은은 내리고,
+비읍은 뿌리고,
+미음은 모으고, 
+선을 그어
+세상을 구조로 만든다
+
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Pre-Chorus 2]
+모음은 흐르고 자음은 만들어
+서로 다른 두 개의 시작
+근데 같은 끝을 향해
+
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Chorus]
+남과 여, 음과 양처럼
+마주 선 두 개의 진리
+곡선은 말해 “나는 생명”
+직선은 말해 “나는 형태”
+둘이 만나 숨 쉬는 순간
+그게 바로 우리의 언어
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Bridge]
+보이지 않는 입이 두 개
+서로를 향해 말하고 있어
+하나는 틀을 만들고
+하나는 그 안을 채워
+공(空) 속에서 시작된 원
+이응은 아무것도 아닌 전부
+비어 있음이 열어주는 길
+그 안에 모든 게 숨 쉬어
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Break]
+흐름과 구조
+살아있는 리듬
+좌우 대칭, 서로 다른 시선
+두 개의 세계가 만든 이 시스템
+자음은 뼈대, 모음은 피
+서로가 없으면 완성은 없지
+코드처럼 돌아가는 이 구조
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+
+[Final Chorus]
+끊어진 듯 이어진 흐름
+그 안에 담긴 우리의 이야기
+직선과 곡선이 만난 자리
+시작과 끝이 겹친 순간
+그 음과 양이 하나가 될 때
+우린 미래를 말하게 돼
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+    </div>
+
+
+<script>
+
+    /* =========================
+       곡 데이터
+       ========================= */
+
+    const track1 = {
+        title: "태극문 열려라",
+
+        src: "taegeuk.mp3",
+
+        lyrics: `
+[Verse 1]
+처음엔 아무 말도 없었지
+그저 숨과 떨림뿐
+어둠 속에서 부딪힌 울림
+그중 살아남은 건 단 하나의 리듬
+소리는 흘러, 사라지고 남아
+자연과 맞는 것만 남아
+입 안에서 태어난 작은 우주
+그걸 우린 언어라 불러
+
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Pre-Chorus]
+형태를 만들는 선
+직선과 곡선
+서로 다른 길 위에 서 있지만
+결국 하나를 향해 가
+
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Chorus]
+
+여는 것과 닫는 것 사이
+그 틈에서 태어난 우리
+직선은 말해 “나는 경계”
+곡선은 말해 “나는 흐름”
+둘이 만나 완성되는 순간
+그게 바로 한글의 궤적
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Verse 2]
+모음은 공간의 방향 좌표
+아는 열려 앞으로
+어는 반대로 안으로
+오는 솟는 숨결
+우는 아래로 가라앉는 파도
+
+자음은 경계를 나눔
+기역은 꺾이고, 
+니은은 내리고,
+비읍은 뿌리고,
+미음은 모으고, 
+선을 그어
+세상을 구조로 만든다
+
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Pre-Chorus 2]
+모음은 흐르고 자음은 만들어
+서로 다른 두 개의 시작
+근데 같은 끝을 향해
+
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Chorus]
+남과 여, 음과 양처럼
+마주 선 두 개의 진리
+곡선은 말해 “나는 생명”
+직선은 말해 “나는 형태”
+둘이 만나 숨 쉬는 순간
+그게 바로 우리의 언어
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Bridge]
+보이지 않는 입이 두 개
+서로를 향해 말하고 있어
+하나는 틀을 만들고
+하나는 그 안을 채워
+공(空) 속에서 시작된 원
+이응은 아무것도 아닌 전부
+비어 있음이 열어주는 길
+그 안에 모든 게 숨 쉬어
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+[Break]
+흐름과 구조
+살아있는 리듬
+좌우 대칭, 서로 다른 시선
+두 개의 세계가 만든 이 시스템
+자음은 뼈대, 모음은 피
+서로가 없으면 완성은 없지
+코드처럼 돌아가는 이 구조
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+
+
+[Final Chorus]
+끊어진 듯 이어진 흐름
+그 안에 담긴 우리의 이야기
+직선과 곡선이 만난 자리
+시작과 끝이 겹친 순간
+그 음과 양이 하나가 될 때
+우린 미래를 말하게 돼
+
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리`
+    };
+
+
+    const track2 = {
+        title: "태극이 돌아간다",
+
+        src: "taeguk1".mp3",
+
+        lyrics: `
+[Verse 1]
+처음엔 아무 말도 없었지
+그저 숨과 떨림뿐
+어둠 속에서 부딪힌 울림
+그중 살아남은 건 단 하나의 리듬
+소리는 흘러, 사라지고 남아
+자연과 맞는 것만 남아
+입 안에서 태어난 작은 우주
+그걸 우린 언어라 불러
+
+[Pre-Chorus]
+형태를 만들는 선
+직선과 곡선
+서로 다른 길 위에 서 있지만
+결국 하나를 향해 가
+
+[Chorus]
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+여는 것과 닫는 것 사이
+그 틈에서 태어난 우리
+직선은 말해 “나는 경계”
+곡선은 말해 “나는 흐름”
+둘이 만나 완성되는 순간
+그게 바로 한글의 궤적
+
+[Verse 2]
+모음은 공간의 방향 좌표
+아는 열려 앞으로
+어는 반대로 안으로
+오는 솟는 숨결
+우는 아래로 가라앉는 파도
+
+자음은 경계를 나눔
+기역은 꺾이고, 
+니은은 내리고,
+비읍은 뿌리고,
+미음은 모으고, 
+선을 그어
+세상을 구조로 만든다
+
+[Pre-Chorus 2]
+모음은 흐르고 자음은 만들어
+서로 다른 두 개의 시작
+근데 같은 끝을 향해
+
+[Chorus]
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+남과 여, 음과 양처럼
+마주 선 두 개의 진리
+곡선은 말해 “나는 생명”
+직선은 말해 “나는 형태”
+둘이 만나 숨 쉬는 순간
+그게 바로 우리의 언어
+
+[Bridge]
+보이지 않는 입이 두 개
+서로를 향해 말하고 있어
+하나는 틀을 만들고
+하나는 그 안을 채워
+공(空) 속에서 시작된 원
+이응은 아무것도 아닌 전부
+비어 있음이 열어주는 길
+그 안에 모든 게 숨 쉬어
+
+[Break]
+흐름과 구조
+살아있는 리듬
+좌우 대칭, 서로 다른 시선
+두 개의 세계가 만든 이 시스템
+자음은 뼈대, 모음은 피
+서로가 없으면 완성은 없지
+코드처럼 돌아가는 이 구조
+
+[Final Chorus]
+좌에서 우로, 우에서 좌로
+서로를 끌어당기는 소리
+끊어진 듯 이어진 흐름
+그 안에 담긴 우리의 이야기
+직선과 곡선이 만난 자리
+시작과 끝이 겹친 순간
+그 음과 양이 하나가 될 때
+우린 미래를 말하게 돼`
+    };
+
+
+    /* =========================
+       현재 곡 번호
+       ========================= */
+
+    let currentTrack = 1;
+
+
+    /* =========================
+       곡 선택
+       ========================= */
+
+    function selectTrack(trackNum) {
+
+        const btn1 = document.getElementById('btn-1');
+        const btn2 = document.getElementById('btn-2');
+
+        const currentTitle =
+            document.getElementById('current-title');
+
+        const audioSource =
+            document.getElementById('audio-source');
+
+        const audioPlayer =
+            document.getElementById('audio-player');
+
+        const lyricsDisplay =
+            document.getElementById('lyrics-display');
+
+
+        currentTrack = trackNum;
+
+
+        if (trackNum === 1) {
+
+            btn1.classList.add('active');
+            btn2.classList.remove('active');
+
+            currentTitle.innerText =
+                track1.title;
+
+            audioSource.src =
+                track1.src;
+
+            lyricsDisplay.innerText =
+                track1.lyrics;
+
+        }
+
+        else {
+
+            btn2.classList.add('active');
+            btn1.classList.remove('active');
+
+            currentTitle.innerText =
+                track2.title;
+
+            audioSource.src =
+                track2.src;
+
+            lyricsDisplay.innerText =
+                track2.lyrics;
+        }
+
+
+        audioPlayer.load();
+
+        audioPlayer.play().catch(function() {
+            // 스마트폰 브라우저가 자동재생을 막는 경우
+        });
+    }
+
+
+    /* =========================
+       2곡 자동 반복
+       ========================= */
+
+    const audioPlayer =
+        document.getElementById('audio-player');
+
+
+    audioPlayer.addEventListener(
+        'ended',
+        function() {
+
+            if (currentTrack === 1) {
+
+                selectTrack(2);
+
+            }
+
+            else {
+
+                selectTrack(1);
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
