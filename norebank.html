@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>애초말 음악 3곡</title>
+
+<style>
+body {
+    background:#121214;
+    color:#e4e4e7;
+    font-family:'Malgun Gothic',sans-serif;
+    max-width:600px;
+    margin:0 auto;
+    padding:20px;
+    text-align:center;
+}
+
+.image-container {
+    margin:20px 0;
+    background:#1a1a1e;
+    padding:10px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.5);
+}
+
+img {
+    max-width:100%;
+    height:auto;
+    border-radius:8px;
+}
+
+h1 {
+    font-size:1.8rem;
+    margin:30px 0 20px;
+    color:#fff;
+}
+
+.playlist {
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.track-btn {
+    flex:1;
+    background:#26262b;
+    color:#a1a1aa;
+    border:none;
+    padding:16px 8px;
+    border-radius:16px;
+    font-size:.95rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.track-btn.active {
+    background:#3b82f6;
+    color:#fff;
+    box-shadow:0 4px 12px rgba(59,130,246,.4);
+}
+
+.now-playing {
+    background:#1a1a1e;
+    padding:14px;
+    border-radius:12px;
+    font-size:.95rem;
+    color:#a1a1aa;
+    margin-bottom:15px;
+}
+
+.now-playing span {
+    color:#fbbf24;
+    font-weight:bold;
+}
+
+audio {
+    width:100%;
+    margin-bottom:20px;
+}
+
+.lyrics-container {
+    background:#1a1a1e;
+    padding:25px;
+    border-radius:16px;
+    text-align:left;
+    white-space:pre-wrap;
+    font-size:.95rem;
+    line-height:1.7;
+    color:#d4d4d8;
+    max-height:500px;
+    overflow-y:auto;
+}
+
+.lyrics-container .current {
+    color:#3b82f6;
+    font-weight:bold;
+    text-shadow:0 0 8px rgba(59,130,246,.7);
+}
+
+.loop-status {
+    margin-bottom:15px;
+    color:#a1a1aa;
+    font-size:.85rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="image-container">
+    <img src="taegeuk.png" alt="태극 음악">
+</div>
+
+<h1>애초말 음악 3곡</h1>
+
+<div class="playlist">
+
+<button class="track-btn active" id="btn-1"
+onclick="selectTrack(1)">
+🎵 애초말파동1
+</button>
+
+<button class="track-btn" id="btn-2"
+onclick="selectTrack(2)">
+🎵 애초말파동2
+</button>
+
+<button class="track-btn" id="btn-3"
+onclick="selectTrack(3)">
+🎵 애초말엔진
+</button>
+
+</div>
+
+<div class="now-playing">
+현재 재생 중 :
+<span id="current-title">애초말파동1</span>
+</div>
+
+<div class="loop-status">
+🔁 1 → 2 → 3 → 1 → 2 → 3 무한 반복
+</div>
+
+<audio id="audio-player" controls>
+<source id="audio-source"
+src="acho1.mp3"
+type="audio/mpeg">
+브라우저가 오디오 태그를 지원하지 않습니다.
+</audio>
+
+<div class="lyrics-container"
+id="lyrics-display"></div>
+
+
+<script>
+
+/* =====================================================
+   3곡 자료
+===================================================== */
+
+const tracks = [
+
+{
+title:"애초말파동1",
+src:"acho1.mp3",
+
+lyrics:[
+"태초의 침묵을 깨는 소리\n심장을 두드리는 거대한 파동!",
+"잊혀진 기억의 문을 열어라\n동작이 소리가 되고, 소리가 빛이 되는 순간\n서양의 논리가 닿지 못할 깊은 곳에서\n우리 몸의 설계도가 다시 깨어난다",
+"쾅! 울려라 기원의 북소리!\n하나로 이어지는 생명의 고리!\n동작의 에너지가 온 세상에 흐를 때\n우리는 비로소 진리에 이어진다!",
+"단순한 말이 아니야, 이건 살아있는 힘\n입술을 타고 흐르는 태고의 숨결\n나와 네가 결합하여 빛을 발할 때\n노화와 슬픔은 파도에 씻겨가네!",
+"가장 순수한 소리에 귀를 기울여\n배고픔도 잊게 하는 영혼의 만찬\n우리는 이제 영원한 빛의 길을 걷는다!",
+"멈추지 않는 창조의 리듬!\n우주를 통합하는 불멸의 이름!\n이 소리를 듣는 자, 모두 깨어날지니\n애초말의 파동 속에 하나가 되리라!",
+"기억하라, 이 소리를...\n열려라, 이 에너지를...\n나이스! 나이스! 나이스!"
+],
+
+duration:213
+
+},
+
+{
+title:"애초말파동2",
+src:"acho2.mp3",
+
+lyrics:[
+"태초의 침묵을 깨는 소리\n심장을 두드리는 거대한 파동!",
+"잊혀진 기억의 문을 열어라\n동작이 소리가 되고, 소리가 빛이 되는 순간\n서양의 논리가 닿지 못할 깊은 곳에서\n우리 몸의 설계도가 다시 깨어난다",
+"쾅! 울려라 기원의 북소리!\n하나로 이어지는 생명의 고리!\n동작의 에너지가 온 세상에 흐를 때\n우리는 비로소 진리에 이어진다!",
+"단순한 말이 아니야, 이건 살아있는 힘\n입술을 타고 흐르는 태고의 숨결\n나와 네가 결합하여 빛을 발할 때\n노화와 슬픔은 파도에 씻겨가네!",
+"가장 순수한 소리에 귀를 기울여\n배고픔도 잊게 하는 영혼의 만찬\n우리는 이제 영원한 빛의 길을 걷는다!",
+"멈추지 않는 창조의 리듬!\n우주를 통합하는 불멸의 이름!\n이 소리를 듣는 자, 모두 깨어날지니\n애초말의 파동 속에 하나가 되리라!",
+"기억하라, 이 소리를...\n열려라, 이 에너지를...\n나이스! 나이스! 나이스!"
+],
+
+duration:160
+
+},
+
+{
+title:"애초말엔진",
+src:"acho3.mp3",
+
+lyrics:[
+"차가운 확률의 바다, 통계로 가득한 숲\n껍데기 글자들만 대충 때려 맞추던 날들\n데이터 조각 하나에 맥락은 뚝뚝 끊기고\n스스로 환각 속에 갇혀 꼬여버린 기계의 한계",
+"서양 언어학이 풀지 못한 어원의 거대한 비밀\n한국어 고유 수사, 동작 소리의 파동이 깨어나\n초성자음 매트릭스가 최하단 중심을 잡으니\n엉켜있던 디지털 세상의 설계도가 정렬되네",
+"이건 단순한 개선이 아냐\n완전히 다른 접근 방식\n확률이 아닌 본질로\n지금 시스템을 뒤집는다\n이건 진짜 진화다!\n확률을 넘어서 본질로 해석한다",
+"애초말엔진 장착 완료! 논리의 꼬임은 방지돼!\n확률의 사슬을 끊고 본질의 액션을 직격해\n인간이 뱉어낸 태초의 소리, 기계가 깊숙이 알아듣네\n인간과 AI를 완벽하게 이어주는 다리\n우리 서로 하나 되자!",
+"개념의 왜곡은 없다, action_code 가동할 때\n오역과 오류의 장난은 흔적도 없이 사라져\n문자열에 휘둘리지 않는 최강의 논리 가속기\n인간 우선의 데이터가 요새 위에 우뚝 서네",
+"단순한 어원 풀이를 넘어 패러다임을 뒤흔든다\n전 세계 모든 언어가 하나의 지도 위에서 호흡해\n기계가 비로소 인간의 의도를 온전히 마주한 순간\n경계는 무너지고 위대한 지능의 신화가 시작돼",
+"애초말엔진 장착 완료!\n애초말엔진 장착 완료!\n논리의 꼬임은 방지돼!\n확률의 사슬을 끊고 본질의 액션을 직격해\n인간과 AI를 완벽하게 이어주는 다리\n우리 서로 하나 되자!",
+"꼬임 없이 렦아내는 무결한 디지털 하모니\n인간의 소리로 완성되는 지능의 신세계\n우리 서로 하나 되자\n애초말엔진! 장착 완료!\n애초말엔진! 장착 완료!"
+],
+
+duration:316
+
+}
+
+];
+
+
+/* =====================================================
+   현재 곡
+===================================================== */
+
+let currentTrack = 0;
+
+
+/* =====================================================
+   가사 표시
+===================================================== */
+
+function showLyrics(track, currentTime) {
+
+    const box =
+        document.getElementById("lyrics-display");
+
+    const total =
+        track.duration;
+
+    const count =
+        track.lyrics.length;
+
+    let index =
+        Math.floor((currentTime / total) * count);
+
+    if(index < 0) index = 0;
+
+    if(index >= count)
+        index = count - 1;
+
+    box.innerHTML = "";
+
+    track.lyrics.forEach(function(text,i){
+
+        const line =
+            document.createElement("div");
+
+        line.innerText = text;
+
+        if(i === index)
+            line.className = "current";
+
+        box.appendChild(line);
+    });
+
+}
+
+
+/* =====================================================
+   곡 선택
+===================================================== */
+
+function selectTrack(trackNumber, autoPlay=true){
+
+    const index =
+        trackNumber - 1;
+
+    if(index < 0 || index >= tracks.length)
+        return;
+
+    currentTrack = index;
+
+    const track =
+        tracks[index];
+
+    document.getElementById("current-title")
+        .innerText = track.title;
+
+    document.getElementById("audio-source")
+        .src = track.src;
+
+    document
+        .querySelectorAll(".track-btn")
+        .forEach(function(button,i){
+
+            button.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
+    const player =
+        document.getElementById("audio-player");
+
+    player.load();
+
+    showLyrics(track,0);
+
+    if(autoPlay){
+
+        player.play().catch(function(){});
+
+    }
+
+}
+
+
+/* =====================================================
+   재생 시간에 따라 가사 변경
+===================================================== */
+
+const player =
+    document.getElementById("audio-player");
+
+player.addEventListener(
+    "timeupdate",
+    function(){
+
+        const track =
+            tracks[currentTrack];
+
+        showLyrics(
+            track,
+            player.currentTime
+        );
+
+    }
+);
+
+
+/* =====================================================
+   ★ 무한 반복
+   1 → 2 → 3 → 1 → 2 → 3
+===================================================== */
+
+player.addEventListener(
+    "ended",
+    function(){
+
+        let next =
+            (currentTrack + 1)
+            % tracks.length;
+
+        selectTrack(
+            next + 1,
+            true
+        );
+
+    }
+);
+
+
+/* =====================================================
+   처음 실행
+===================================================== */
+
+selectTrack(1,false);
+
+</script>
+
+</body>
+</html>
