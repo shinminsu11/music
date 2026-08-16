@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ㅡ태극 음악 2곡</title>
+    <title>태극 음악 2곡</title>
 
     <style>
         body {
@@ -110,37 +110,34 @@
 
     <h1>태극 음악 2곡</h1>
 
-    <!-- 곡 선택 버튼 -->
     <div class="playlist">
+
         <button class="track-btn active"
                 id="btn-1"
                 onclick="selectTrack(1)">
-            🎵태극문 열려라
+            🎵 태극문 열려라
         </button>
 
         <button class="track-btn"
                 id="btn-2"
                 onclick="selectTrack(2)">
-            🎵태극이 돌아간다
+            🎵 태극이 돌아간다
         </button>
+
     </div>
 
-    <!-- 현재 재생 중 -->
     <div class="now-playing">
         현재 재생 중 :
-        <span id="current-title">태극문 열려라 </span>
+        <span id="current-title">태극문 열려라</span>
     </div>
 
-    <!-- 오디오 -->
     <audio id="audio-player" controls>
         <source id="audio-source"
                 src="taegeuk.mp3"
                 type="audio/mpeg">
-
         브라우저가 오디오 태그를 지원하지 않습니다.
     </audio>
 
-    <!-- 가사 -->
     <div class="lyrics-container" id="lyrics-display">
 [Intro]
 
@@ -156,24 +153,20 @@
 카라 하나 간다
 뜨르 둘 들어온다
 
-
 트르서 셋 터진다 솟는다
 너르서 넷 넣다 내려간다
-
 
 트르서서 다섯 뿌르 뿌려라
 너르서서 여섯 모르 몰려라
 
-
 일곱 꾸르 꾸부려 꺾어라
 여덟 피르 펴라 펼쳐라
-
 
 아홉 리을 태극엔진 돌아라 돌아라
 여르 열 열려라
 
-
 [Verse 2]
+
 오른쪽 오른다 Right 양
 왼쪽 내린다 Left 음
 
@@ -184,17 +177,18 @@
 다섯 여섯 남북축 입체
 
 앞뒤동서남북 세축
-삼합육생 팽창의 끝 더 이상 갈 곳이 없다 꺾어라 
-일 구부려 꺾어 일 구부려 꺾어 꺾어라 
-일곱 큐브 큐브 큐브
-여덟 팔괘 펼쳐라 펼쳐라 
+삼합육생 팽창의 끝 더 이상 갈 곳이 없다 꺾어라
 
-아홉 태극엔진 돌아라 
+일 구부려 꺾어 일 구부려 꺾어 꺾어라
+
+일곱 큐브 큐브 큐브
+여덟 팔괘 펼쳐라 펼쳐라
+
+아홉 태극엔진 돌아라
 
 열 여르 열려라
 
 [Drop / Hook]
-
 
 태극이 돌아간다
 태극이 돌아간다
@@ -204,7 +198,6 @@
 
 오른손과 왼손이 만난다
 열 완성
-
 
 돌고 돈다
 태극이 돈다
@@ -216,37 +209,36 @@
 
 [Final Message 🌍]
 
-손과 손이 만난다  
+손과 손이 만난다
 
-사람과 사람이 만난다  
-세계가 하나로 모인다  
+사람과 사람이 만난다
+세계가 하나로 모인다
 
-모든 방향이  
-하나로 모인다  
+모든 방향이
+하나로 모인다
 
-짝  
+짝
 
 ---
 
 [Outro]
 
-태극이 돌아간다  
+태극이 돌아간다
 
-오른쪽은 오른다  
-왼쪽은 내린다  
+오른쪽은 오른다
+왼쪽은 내린다
 
-카라는 간다  
-뜨르는 들어온다  
+카라는 간다
+뜨르는 들어온다
 
 오른손 왼손
-손바닥이 합쳐진다  
+손바닥이 합쳐진다
 
-열 
+열
 
-완성  
+완성
 
 짝…
-
     </div>
 
 
@@ -258,7 +250,6 @@
 
     const track1 = {
         title: "태극문 열려라",
-
         src: "taegeuk.mp3",
 
         lyrics: `
@@ -276,24 +267,20 @@
 카라 하나 간다
 뜨르 둘 들어온다
 
-
 트르서 셋 터진다 솟는다
 너르서 넷 넣다 내려간다
-
 
 트르서서 다섯 뿌르 뿌려라
 너르서서 여섯 모르 몰려라
 
-
 일곱 꾸르 꾸부려 꺾어라
 여덟 피르 펴라 펼쳐라
-
 
 아홉 리을 태극엔진 돌아라 돌아라
 여르 열 열려라
 
-
 [Verse 2]
+
 오른쪽 오른다 Right 양
 왼쪽 내린다 Left 음
 
@@ -304,17 +291,18 @@
 다섯 여섯 남북축 입체
 
 앞뒤동서남북 세축
-삼합육생 팽창의 끝 더 이상 갈 곳이 없다 꺾어라 
-일 구부려 꺾어 일 구부려 꺾어 꺾어라 
-일곱 큐브 큐브 큐브
-여덟 팔괘 펼쳐라 펼쳐라 
+삼합육생 팽창의 끝 더 이상 갈 곳이 없다 꺾어라
 
-아홉 태극엔진 돌아라 
+일 구부려 꺾어 일 구부려 꺾어 꺾어라
+
+일곱 큐브 큐브 큐브
+여덟 팔괘 펼쳐라 펼쳐라
+
+아홉 태극엔진 돌아라
 
 열 여르 열려라
 
 [Drop / Hook]
-
 
 태극이 돌아간다
 태극이 돌아간다
@@ -324,7 +312,6 @@
 
 오른손과 왼손이 만난다
 열 완성
-
 
 돌고 돈다
 태극이 돈다
@@ -336,34 +323,34 @@
 
 [Final Message 🌍]
 
-손과 손이 만난다  
+손과 손이 만난다
 
-사람과 사람이 만난다  
-세계가 하나로 모인다  
+사람과 사람이 만난다
+세계가 하나로 모인다
 
-모든 방향이  
-하나로 모인다  
+모든 방향이
+하나로 모인다
 
-짝  
+짝
 
 ---
 
 [Outro]
 
-태극이 돌아간다  
+태극이 돌아간다
 
-오른쪽은 오른다  
-왼쪽은 내린다  
+오른쪽은 오른다
+왼쪽은 내린다
 
-카라는 간다  
-뜨르는 들어온다  
+카라는 간다
+뜨르는 들어온다
 
 오른손 왼손
-손바닥이 합쳐진다  
+손바닥이 합쳐진다
 
-열 
+열
 
-완성  
+완성
 
 짝…`
     };
@@ -371,15 +358,14 @@
 
     const track2 = {
         title: "태극이 돌아간다",
-
-        src: "taeguk1.mp3",
+        src: "taegeuk1.mp3",
 
         lyrics: `
 [Intro]
 (whisper, distant)
 
-하나… 둘… 셋… 넷…  
-다섯… 여섯… 일곱…  
+하나… 둘… 셋… 넷…
+다섯… 여섯… 일곱…
 여덟… 아홉… 열…
 
 짝…
@@ -388,181 +374,179 @@
 
 [Core]
 
-태극이 돌아간다  
+태극이 돌아간다
 
-오른쪽  
-오른다  
-라이트 양  
+오른쪽
+오른다
+라이트 양
 
-왼쪽  
-내린다  
-레프트 음  
+왼쪽
+내린다
+레프트 음
 
-앞뒤로 하나 둘  
-카라 가다  
-뜨르 들어온다  
-전후로 선이 생겨난다  
-
+앞뒤로 하나 둘
+카라 가다
+뜨르 들어온다
+전후로 선이 생겨난다
 
 [Verse 1]
 
-태극이 돌아간다  
+태극이 돌아간다
 
-오른쪽  
-오른다  
-라이트 양  
+오른쪽
+오른다
+라이트 양
 
-왼쪽  
-내린다  
-레프트 음  
+왼쪽
+내린다
+레프트 음
 
-동서로 셋 넷  
-트르 너르 
-좌우로 선이 이어져  
-면이 된다  
-
+동서로 셋 넷
+트르 너르
+좌우로 선이 이어져
+면이 된다
 
 [Verse 2]
 
-태극이 돌아간다  
+태극이 돌아간다
 
-오른쪽  
-오른다  
-라이트 양  
+오른쪽
+오른다
+라이트 양
 
-왼쪽  
-내린다  
-레프트 음  
+왼쪽
+내린다
+레프트 음
 
-남북으로 다섯 여섯  
-뿌르 모르 
-쌓여 올라  
-입체가 된다  
+남북으로 다섯 여섯
+뿌르 모르
+쌓여 올라
+입체가 된다
 
-위와 아래  
-갈라지고  
-공간이 열린다  
+위와 아래
+갈라지고
+공간이 열린다
 
 ---
 
 [Build Up – 7→8→9]
 
+일곱
+꾸르
+꾸부려 꼬부려 꺾어
+큐브 모양이 된다
 
-일곱  
-꾸르  
-꾸부려 꼬부려 꺾어  
-큐브 모양이 된다  
+여덟
+피르 피르 펼쳐라
+온 방향으로
+펼쳐진다
 
-여덟  
-피르 피르 펼쳐라  
-온 방향으로  
-펼쳐진다  
+피르 피르 피르
+팔방 8괘가 열린다
 
-피르 피르 피르  
-팔방 8괘가 열린다  
+펼쳐진 모든 것
 
-펼쳐진 모든 것  
-
-아 꼬불 꼬부  
-아홉  
+아 꼬불 꼬부
+아홉
 
 태극이 돌아간다
-오른쪽  
-오른다  
-라이트 양  
+오른쪽
+오른다
+라이트 양
 
-왼쪽  
-내린다  
-레프트 음  
+왼쪽
+내린다
+레프트 음
 
-태극이 구르고 흐르고 돌아간다  
+태극이 구르고 흐르고 돌아간다
 
 ---
 
 [Build Up]
 
-하나 둘 셋 넷  
-다섯 여섯 일곱  
-여덟 아홉 열  
+하나 둘 셋 넷
+다섯 여섯 일곱
+여덟 아홉 열
 
-짝…  
-짝…  
+짝…
+짝…
 짝…
 
 (DEAD SILENCE)
+
 ---
 
 [Final Drop: Bass and Kick]
 
 짝! 짝! 짝!
 
-카라 뜨르 트르 너르  
-뿌르 모르 꾸르 피르  
-팔려지음 터진다  
+카라 뜨르 트르 너르
+뿌르 모르 꾸르 피르
+팔려지음 터진다
 
 KICK IN
 
-카라 가다  
-뜨르 들어온다  
+카라 가다
+뜨르 들어온다
 
 태극이 돌아간다
 오른쪽
-라이트 양  
-오른다  
+라이트 양
+오른다
 
 왼쪽
-레프트 음  
-내린다  
+레프트 음
+내린다
 
-팔로 펼쳐  
-아홉으로 굴린다  
+팔로 펼쳐
+아홉으로 굴린다
 
-태극으로  
-순환한다  
+태극으로
+순환한다
 
 짝!   짝!   짝!
 
 ---
 
-[Break: Hand Claps only] 
+[Break: Hand Claps only]
 
-짝   짝   짝  
-짝짝   짝  
+짝   짝   짝
+짝짝   짝
 
-짝짝짝짝짝  
+짝짝짝짝짝
 
 ---
 
 [Final Message 🌍]
 
-손과 손이 만난다  
+손과 손이 만난다
 
-사람과 사람이 만난다  
-세계가 하나로 모인다  
+사람과 사람이 만난다
+세계가 하나로 모인다
 
-모든 방향이  
-하나로 모인다  
+모든 방향이
+하나로 모인다
 
-짝  
+짝
 
 ---
 
 [Outro]
 
-태극이 돌아간다  
+태극이 돌아간다
 
-오른쪽은 오른다  
-왼쪽은 내린다  
+오른쪽은 오른다
+왼쪽은 내린다
 
-카라는 간다  
-뜨르는 들어온다  
+카라는 간다
+뜨르는 들어온다
 
 오른손 왼손
-손바닥이 합쳐진다  
+손바닥이 합쳐진다
 
-십  
+십
 
-완성  
+완성
 
 짝…`
     };
@@ -576,25 +560,25 @@ KICK IN
 
 
     /* =========================
-       곡 선택
+       곡 선택 함수
        ========================= */
 
     function selectTrack(trackNum) {
 
-        const btn1 = document.getElementById('btn-1');
-        const btn2 = document.getElementById('btn-2');
+        const btn1 = document.getElementById("btn-1");
+        const btn2 = document.getElementById("btn-2");
 
         const currentTitle =
-            document.getElementById('current-title');
+            document.getElementById("current-title");
 
         const audioSource =
-            document.getElementById('audio-source');
+            document.getElementById("audio-source");
 
         const audioPlayer =
-            document.getElementById('audio-player');
+            document.getElementById("audio-player");
 
         const lyricsDisplay =
-            document.getElementById('lyrics-display');
+            document.getElementById("lyrics-display");
 
 
         currentTrack = trackNum;
@@ -602,8 +586,8 @@ KICK IN
 
         if (trackNum === 1) {
 
-            btn1.classList.add('active');
-            btn2.classList.remove('active');
+            btn1.classList.add("active");
+            btn2.classList.remove("active");
 
             currentTitle.innerText =
                 track1.title;
@@ -614,12 +598,10 @@ KICK IN
             lyricsDisplay.innerText =
                 track1.lyrics;
 
-        }
+        } else {
 
-        else {
-
-            btn2.classList.add('active');
-            btn1.classList.remove('active');
+            btn2.classList.add("active");
+            btn1.classList.remove("active");
 
             currentTitle.innerText =
                 track2.title;
@@ -635,7 +617,7 @@ KICK IN
         audioPlayer.load();
 
         audioPlayer.play().catch(function() {
-            // 스마트폰 브라우저가 자동재생을 막는 경우
+            // 스마트폰 브라우저 자동재생 차단 시 무시
         });
     }
 
@@ -644,28 +626,16 @@ KICK IN
        2곡 자동 반복
        ========================= */
 
-    const audioPlayer =
-        document.getElementById('audio-player');
-
-
-    audioPlayer.addEventListener(
-        'ended',
-        function() {
+    document.getElementById("audio-player")
+        .addEventListener("ended", function() {
 
             if (currentTrack === 1) {
-
                 selectTrack(2);
-
-            }
-
-            else {
-
+            } else {
                 selectTrack(1);
-
             }
 
-        }
-    );
+        });
 
 </script>
 
