@@ -5,3 +5,6 @@ https://shinminsu11.github.io/music/index.html
 
 ​▶️애초말 
 https://shinminsu11.github.io/music/acho.html
+
+​▶️ai
+https://shinminsu11.github.io/music/ai.html
