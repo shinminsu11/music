@@ -12,5 +12,8 @@ https://shinminsu11.github.io/music/acho.html
 ​▶️언약괘
 https://shinminsu11.github.io/music/promise.html
 
+​▶️부도지
+https://shinminsu11.github.io/music/sori.html
+
 ​▶️ai
 https://shinminsu11.github.io/music/ai.html
