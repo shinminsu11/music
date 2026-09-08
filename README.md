@@ -15,5 +15,7 @@ https://shinminsu11.github.io/music/promise.html
 ​▶️부도지
 https://shinminsu11.github.io/music/sori.html
 
+▶️천부의 율려 https://shinminsu11.github.io/music/yulre.html
+
 ​▶️ai
 https://shinminsu11.github.io/music/ai.html
