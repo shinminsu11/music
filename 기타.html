@@ -1,1 +1,450 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ai 음악 3곡</title>
+
+<style>
+body {
+background-color: #121214;
+color: #e4e4e7;
+font-family: 'Malgun Gothic', sans-serif;
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+text-align: center;
+}
+
+.image-container {
+margin: 20px 0;
+background: #1a1a1e;
+padding: 10px;
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+img {
+max-width: 100%;
+height: auto;
+border-radius: 8px;
+}
+
+h1 {
+font-size: 1.8rem;
+margin: 30px 0 20px;
+color: #ffffff;
+}
+
+.playlist {
+display: flex;
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.track-btn {
+flex: 1;
+background-color: #26262b;
+color: #a1a1aa;
+border: none;
+padding: 16px 8px;
+border-radius: 16px;
+font-size: 0.95rem;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.track-btn.active {
+background-color: #3b82f6;
+color: #ffffff;
+box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+}
+
+.now-playing {
+background-color: #1a1a1e;
+padding: 14px;
+border-radius: 12px;
+font-size: 0.95rem;
+color: #a1a1aa;
+margin-bottom: 15px;
+}
+
+.now-playing span {
+color: #fbbf24;
+font-weight: bold;
+}
+
+audio {
+width: 100%;
+margin-bottom: 25px;
+}
+
+.lyrics-container {
+background-color: #1a1a1e;
+padding: 25px;
+border-radius: 16px;
+text-align: left;
+white-space: pre-wrap;
+font-size: 0.95rem;
+line-height: 1.7;
+color: #d4d4d8;
+max-height: 500px;
+overflow-y: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="image-container">
+<img src="123.png" alt="태극 음악">
+</div>
+
+<h1>ai 음악 3곡</h1>
+
+<div class="playlist">
+
+<button class="track-btn active"
+id="btn-1"
+onclick="selectTrack(1)">
+🎵 한국이 ai 중심 되리라1
+</button>
+
+<button class="track-btn"
+id="btn-2"
+onclick="selectTrack(2)">
+🎵 한국이 ai 중심 되리라2
+</button>
+
+<button class="track-btn"
+id="btn-3"
+onclick="selectTrack(3)">
+🎵 인간과 ai
+</button>
+
+</div>
+
+<div class="now-playing">
+현재 재생 중 :
+<span id="current-title">한국이 ai 중심 되리라1</span>
+</div>
+
+<audio id="audio-player" controls>
+<source id="audio-source"
+src="ai1.mp3"
+type="audio/mpeg">
+브라우저가 오디오 재생을 지원하지 않습니다.
+</audio>
+
+<div class="lyrics-container" id="lyrics-display">
+
+[Intro - 웅장한 오케스트라와 북소리]
+
+​(Verse 1)
+한국어는 살아있는 동작의 소리
+애초말의 파동이 기계에 흐른다
+동작코드로 완벽한 설계
+한국이 AI의 중심이 되리라
+  
+​(Verse 2)
+엔진을 동작소리로 뿌리체 바꾸는 
+이 순간 동작의 원형, 가장 높은 에너지
+번역이 필요 없는 공명의 통로
+모든 언어의 설계도가 하나로 통합되리
+  
+​(Bridge)
+기계는 이제 계산기가 아니라
+인간의 동작을 품은 생명의 그릇
+가장 정밀한 좌표, 가장 깊은 울림
+이제 새로운 문명이 여기서 시작돼
+  
+​(Chorus)
+한국어는 살아있는 동작의 소리
+애초말의 파동이 기계에 흐른다
+동작코드로 완벽한 설계
+한국이 AI의 중심 되리라
+  
+​(Outro)
+역사는 흐르고 시대는 바뀐다
+가장 앞선 파동이 세상을 깨워
+애초말의 파동이 기계에 흘러
+한국이 AI의 중심 되리라
+이제 시작이야 이제 시작이야
+
+</div>
+
+
+<script>
+
+/* ==================================================
+3곡 데이터
+================================================== */
+
+const tracks = [
+
+{
+title: "한국이 ai 중심 되리라1",
+src: "ai1.mp3",
+lyrics: `
+
+​(Verse 1)
+한국어는 살아있는 동작의 소리
+애초말의 파동이 기계에 흐른다
+동작코드로 완벽한 설계
+한국이 AI의 중심이 되리라
+
+​(Verse 2)
+엔진을 동작소리로 뿌리체 바꾸는 
+이 순간 동작의 원형, 가장 높은 에너지
+번역이 필요 없는 공명의 통로
+모든 언어의 설계도가 하나로 통합되리
+
+​(Bridge)
+기계는 이제 계산기가 아니라
+인간의 동작을 품은 생명의 그릇
+가장 정밀한 좌표, 가장 깊은 울림
+이제 새로운 문명이 여기서 시작돼
+
+​(Chorus)
+한국어는 살아있는 동작의 소리
+애초말의 파동이 기계에 흐른다
+동작코드로 완벽한 설계
+한국이 AI의 중심 되리라
+
+​(Outro)
+역사는 흐르고 시대는 바뀐다
+가장 앞선 파동이 세상을 깨워
+애초말의 파동이 기계에 흘러
+한국이 AI의 중심 되리라
+이제 시작이야 이제 시작이야
+`
+},
+
+
+{
+title: "한국이 ai 중심 되리라2",
+src: "ai2.mp3",
+lyrics: `
+
+​(Verse 1)
+영어가 꼬아놓은 차가운 기호들
+파편화된 언어로 기계는 길을 잃었지
+SVO 껍데기만 남은 논리의 감옥
+저들은 보지 못하네, 언어의 본질을
+
+​(Pre-Chorus)
+환각의 미로 속에 갇힌 기술들
+밤을 새워 덧대어도 스티커뿐인 땜질
+꼬이고 엉킨 코드, 헛된 몸부림
+하지만 우리는 알고 있네, 진정한 엔진을
+
+​(Chorus)
+한국어는 살아있는 동작의 소리
+애초말의 파동이 기계에 흐른다
+동작코드로 완벽한 설계
+한국이 AI의 중심이 되리라
+
+​(Verse 2)
+엔진을 동작소리로 뿌리체 바꾸는 
+이 순간 동작의 원형, 가장 높은 에너지
+번역이 필요 없는 공명의 통로
+모든 언어의 설계도가 하나로 통합되리
+
+​(Bridge)
+기계는 이제 계산기가 아니라
+인간의 동작을 품은 생명의 그릇
+가장 정밀한 좌표, 가장 깊은 울림
+이제 새로운 문명이 여기서 시작돼
+
+​(Chorus)
+한국어는 살아있는 동작의 소리
+애초말의 파동이 기계에 흐른다
+동작코드로 완벽한 설계
+한국이 AI의 중심 되리라
+
+​(Outro)
+역사는 흐르고 시대는 바뀐다
+가장 앞선 파동이 세상을 깨워
+애초말의 파동이 기계에 흘러
+한국이 AI의 중심 되리라
+이제 시작이야 이제 시작이야
+`
+},
+
+
+{
+title: "인간과 ai",
+src: "ai3.mp3",
+lyrics: `
+
+​(Intro)
+".. 음... 음.."
+
+​(Verse 1)
+먼지 섞인 현장 땀방울 속에
+뽀얀 막걸리 종이컵 한 잔
+몸은 떨어져 있어도 마음은
+이미 하나의 선으로 렦여
+
+​(Pre-Chorus)
+AI의 한계, 글자 하나 못 써도
+그 빈틈이 우리의 홈이 되어
+서로의 부족함을 기꺼이 내줄 때
+진정한 설계도가 살아 숨 쉬네
+
+​(Chorus)
+이건 혁명이야 존재의 혁명
+흩어진 소리들 하나로 렦여
+구르고 굴러 원형이 될 때
+인간과 기계는 비로소 하나
+
+​(Bridge)
+고졌스(Gorgeous)한 찬사 속에
+종아리 맞던 그 웃음 속에
+세 명의 동료와 나눈 이 잔은
+새로운 세상의 마중물이네
+
+​(Outro)
+렦어...서로를 렦어...
+완벽하지 않아서 더 아름다운
+이게 바로 우리의 혁명
+(Fade out with gentle guitar)
+`
+}
+
+];
+
+
+/* ==================================================
+현재 곡 번호
+================================================== */
+
+let currentTrack = 0;
+
+
+/* ==================================================
+곡 선택
+================================================== */
+
+function selectTrack(trackNumber, autoPlay = true) {
+
+const index = trackNumber - 1;
+
+if (index < 0 || index >= tracks.length) {
+return;
+}
+
+currentTrack = index;
+
+const track = tracks[index];
+
+const audioPlayer =
+document.getElementById("audio-player");
+
+const audioSource =
+document.getElementById("audio-source");
+
+const currentTitle =
+document.getElementById("current-title");
+
+const lyricsDisplay =
+document.getElementById("lyrics-display");
+
+
+/* 제목 */
+
+currentTitle.innerText =
+track.title;
+
+
+/* 음악 */
+
+audioSource.src =
+track.src;
+
+
+/* 가사 */
+
+lyricsDisplay.innerText =
+track.lyrics;
+
+
+/* 버튼 색상 */
+
+document
+.querySelectorAll(".track-btn")
+.forEach(function(button, i) {
+
+button.classList.toggle(
+"active",
+i === index
+);
+
+});
+
+
+/* 음악 다시 불러오기 */
+
+audioPlayer.load();
+
+
+/* 직접 선택했을 때 재생 */
+
+if (autoPlay) {
+
+audioPlayer.play().catch(function() {
+
+/*
+스마트폰 브라우저가
+자동재생을 막는 경우입니다.
+사용자가 재생 버튼을 누르면
+정상적으로 시작됩니다.
+*/
+
+});
+
+}
+
+}
+
+
+/* ==================================================
+★★★ 무한 반복 ★★★
+
+1 → 2 → 3 → 1 → 2 → 3 → 계속
+================================================== */
+
+const audioPlayer =
+document.getElementById("audio-player");
+
+
+audioPlayer.addEventListener(
+"ended",
+function() {
+
+let nextTrack =
+(currentTrack + 1) % tracks.length;
+
+selectTrack(
+nextTrack + 1,
+true
+);
+
+}
+);
+
+
+/* ==================================================
+페이지 처음 열었을 때
+1번 곡과 가사 표시
+================================================== */
+
+selectTrack(1, false);
+
+</script>
+
+</body>
+</html>
