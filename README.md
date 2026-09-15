@@ -19,3 +19,7 @@ https://shinminsu11.github.io/music/sori.html
 
 ​▶️ai
 https://shinminsu11.github.io/music/ai.html
+
+
+​▶️기타
+https://shinminsu11.github.io/music/기타.html
