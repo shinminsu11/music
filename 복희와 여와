@@ -100,29 +100,29 @@ overflow-y: auto;
 <body>
 
 <div class="image-container">
-<img src="8려지음.png" alt="태극 음악">
+<img src="fuxi3.png" alt="태극 음악">
 </div>
 
-<h1>음악 3곡</h1>
+<h1>복희 여와 3곡</h1>
 
 <div class="playlist">
 
 <button class="track-btn active"
 id="btn-1"
 onclick="selectTrack(1)">
-🎵 태극이 돌아간다
+🎵 복희 여와(호)
 </button>
 
 <button class="track-btn"
 id="btn-2"
 onclick="selectTrack(2)">
-🎵 언약괘의 약속
+🎵 복희 여와
 </button>
 
 <button class="track-btn"
 id="btn-3"
 onclick="selectTrack(3)">
-🎵 세계언어의 뿌리
+🎵 복희 여와(ㅑ)
 </button>
 
 </div>
