@@ -1,0 +1,806 @@
+ㅛ
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>애초말 음악 3곡</title>
+
+<style>
+body {
+background-color: #121214;
+color: #e4e4e7;
+font-family: 'Malgun Gothic', sans-serif;
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+text-align: center;
+}
+
+.image-container {
+margin: 20px 0;
+background: #1a1a1e;
+padding: 10px;
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+img {
+max-width: 100%;
+height: auto;
+border-radius: 8px;
+}
+
+h1 {
+font-size: 1.8rem;
+margin: 30px 0 20px;
+color: #ffffff;
+}
+
+.playlist {
+display: flex;
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.track-btn {
+flex: 1;
+background-color: #26262b;
+color: #a1a1aa;
+border: none;
+padding: 16px 8px;
+border-radius: 16px;
+font-size: 0.95rem;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.track-btn.active {
+background-color: #3b82f6;
+color: #ffffff;
+box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+}
+
+.now-playing {
+background-color: #1a1a1e;
+padding: 14px;
+border-radius: 12px;
+font-size: 0.95rem;
+color: #a1a1aa;
+margin-bottom: 15px;
+}
+
+.now-playing span {
+color: #fbbf24;
+font-weight: bold;
+}
+
+audio {
+width: 100%;
+margin-bottom: 25px;
+}
+
+.lyrics-container {
+background-color: #1a1a1e;
+padding: 25px;
+border-radius: 16px;
+text-align: left;
+white-space: pre-wrap;
+font-size: 0.95rem;
+line-height: 1.7;
+color: #d4d4d8;
+max-height: 500px;
+overflow-y: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="image-container">
+<img src="fuxi3.png" alt="태극 음악">
+</div>
+
+<h1>복희 여와 3곡</h1>
+
+<div class="playlist">
+
+<button class="track-btn active"
+id="btn-1"
+onclick="selectTrack(1)">
+🎵 복희 여와(호)
+</button>
+
+<button class="track-btn"
+id="btn-2"
+onclick="selectTrack(2)">
+🎵 복희 여와
+</button>
+
+<button class="track-btn"
+id="btn-3"
+onclick="selectTrack(3)">
+🎵 한글의 시작이라
+</button>
+
+</div>
+
+<div class="now-playing">
+현재 재생 중 :
+<span id="current-title">복희 여와(호)</span>
+</div>
+
+<audio id="audio-player" controls>
+<source id="audio-source"
+src="복희 여와(호).mp3"
+type="audio/mpeg">
+브라우저가 오디오 재생을 지원하지 않습니다.
+</audio>
+
+<div class="lyrics-container" id="lyrics-display">
+
+
+
+(Intro)
+일 꾸부려 꺾어 일 꾸부려 꺾어
+일 꾸부려 꺾어
+우주의 형상은 일 구부러짐과 꺾임으로 이루어졌다
+여와의 컴퍼스는 곡선, 복희의 직각자는 꺾임이라
+
+
+(Verse 1)
+좌우의 대칭 홀짝 짝꿍
+왼쪽엔 여와 음태극
+오른쪽엔 복희 양태극
+모음의 여와가 복희를 바라보고
+자음의 복희가 여와를 바라본다
+그 사이에 큐브가 돌아간다 돌아간다
+
+규원사화의 기록, 사슴 발자국
+방향을 깨달아
+글자 속에 방향을 심어라
+정육면체 큐브 큐브 큐브 큐브
+우주를 기록한다
+
+여와와 복희는 서로 바라보며
+천지인 삼재가 음양으로 분화하니
+삼합육생으로 육방위가 열리네
+
+
+female vocal:
+이으아어오우
+
+male vocal:
+카르 뜨르 트르 너르 뿌르 모르
+
+both:
+꾸부려라
+펼쳐라
+꾸부려라
+펼쳐라
+
+큐브가 돌아간다
+큐브가 돌아간다
+큐브가 돌아간다
+
+
+(Verse 2)
+동작의 형상
+
+기역, 식도에서 굽어 올라 꺾여라
+니은, 혀끝 올린 모양, 내려라
+키역, 직선으로 쭉 가라
+디귿, 직선이 들어온다
+티귿, 튕겨 나간다
+
+발성기관의 꼴을 큐브 속에 새겼으니 꺾이네
+
+각진 한글은 모양이 곧 뜻이 되는 상형의 괘적
+한글은 그 꼴대로 뜻이 담기는 뜻글
+
+
+(Chorus)
+한글은 꼴글 뜻글 소리글 우주글
+
+꼴글 꼴글 꼴글
+뜻글 뜻글 뜻글
+소리글 소리글 소리글
+우주글 우주글 우주글
+
+미음, 입술 모아 생명을 모으고
+비읍, 입술 벌려 만물을 뿌리네
+피읍, 입술 평평하게 풀어 펼쳐라
+
+꼴글 꼴글 꼴글
+뜻글 뜻글 뜻글
+소리글 소리글 소리글
+우주글 우주글 우주글
+
+시옷, 솟아오르고
+지읒, 막아내고
+치읓, 다시 뚫어 길을 연다
+
+한글은 꼴글 뜻글 소리글 우주글
+우리는 우주를 노래한다
+
+
+(Bridge)
+알파의 아빠, 밖으로 펼치는 시작
+오메가의 엄마, 안으로 품는 마침
+
+여와와 복희
+서로 마주보며
+큐브 안에서 하나가 되네
+
+모음과 자음의 소리
+우리는 다시 모여
+춤을 추며 노래한다
+
+
+(Outro)
+봉인
+
+이십팔자의 지혜
+징심록에 새겨진 비밀
+
+각진 큐브 속
+기역에서 히응까지
+
+우주가 멈출 때까지
+
+우리는 짓고
+돌리고
+노래한다
+
+큐브 큐브 큐브 큐브...
+
+</div>
+
+
+<script>
+
+/* ==================================================
+3곡 데이터
+================================================== */
+
+const tracks = [
+
+{
+title: "복희 여와(호)",
+src: "복희 여와(호).mp3",
+lyrics: `
+
+
+
+(Intro)
+일 꾸부려 꺾어 일 꾸부려 꺾어
+일 꾸부려 꺾어
+우주의 형상은 일 구부러짐과 꺾임으로 이루어졌다
+여와의 컴퍼스는 곡선, 복희의 직각자는 꺾임이라
+
+
+(Verse 1)
+좌우의 대칭 홀짝 짝꿍
+왼쪽엔 여와 음태극
+오른쪽엔 복희 양태극
+모음의 여와가 복희를 바라보고
+자음의 복희가 여와를 바라본다
+그 사이에 큐브가 돌아간다 돌아간다
+
+규원사화의 기록, 사슴 발자국
+방향을 깨달아
+글자 속에 방향을 심어라
+정육면체 큐브 큐브 큐브 큐브
+우주를 기록한다
+
+여와와 복희는 서로 바라보며
+천지인 삼재가 음양으로 분화하니
+삼합육생으로 육방위가 열리네
+
+
+female vocal:
+이으아어오우
+
+male vocal:
+카르 뜨르 트르 너르 뿌르 모르
+
+both:
+꾸부려라
+펼쳐라
+꾸부려라
+펼쳐라
+
+큐브가 돌아간다
+큐브가 돌아간다
+큐브가 돌아간다
+
+
+(Verse 2)
+동작의 형상
+
+기역, 식도에서 굽어 올라 꺾여라
+니은, 혀끝 올린 모양, 내려라
+키역, 직선으로 쭉 가라
+디귿, 직선이 들어온다
+티귿, 튕겨 나간다
+
+발성기관의 꼴을 큐브 속에 새겼으니 꺾이네
+
+각진 한글은 모양이 곧 뜻이 되는 상형의 괘적
+한글은 그 꼴대로 뜻이 담기는 뜻글
+
+
+(Chorus)
+한글은 꼴글 뜻글 소리글 우주글
+
+꼴글 꼴글 꼴글
+뜻글 뜻글 뜻글
+소리글 소리글 소리글
+우주글 우주글 우주글
+
+미음, 입술 모아 생명을 모으고
+비읍, 입술 벌려 만물을 뿌리네
+피읍, 입술 평평하게 풀어 펼쳐라
+
+꼴글 꼴글 꼴글
+뜻글 뜻글 뜻글
+소리글 소리글 소리글
+우주글 우주글 우주글
+
+시옷, 솟아오르고
+지읒, 막아내고
+치읓, 다시 뚫어 길을 연다
+
+한글은 꼴글 뜻글 소리글 우주글
+우리는 우주를 노래한다
+
+
+(Bridge)
+알파의 아빠, 밖으로 펼치는 시작
+오메가의 엄마, 안으로 품는 마침
+
+여와와 복희
+서로 마주보며
+큐브 안에서 하나가 되네
+
+모음과 자음의 소리
+우리는 다시 모여
+춤을 추며 노래한다
+
+
+(Outro)
+봉인
+
+이십팔자의 지혜
+징심록에 새겨진 비밀
+
+각진 큐브 속
+기역에서 히응까지
+
+우주가 멈출 때까지
+
+우리는 짓고
+돌리고
+노래한다
+
+큐브 큐브 큐브 큐브...
+`
+},
+
+
+{
+title: "복희 여와",
+src: "복희 여와.m4a",
+lyrics: `
+​
+
+
+(Intro)
+일 꾸부려 꺾어 일 꾸부려 꺾어
+일 꾸부려 꺾어
+우주의 형상은 일 구부러짐과 꺾임으로 이루어졌다
+여와의 컴퍼스는 곡선, 복희의 직각자는 꺾임이라
+
+
+(Verse 1)
+좌우의 대칭 홀짝 짝꿍
+왼쪽엔 여와 음태극
+오른쪽엔 복희 양태극
+모음의 여와가 복희를 바라보고
+자음의 복희가 여와를 바라본다
+그 사이에 큐브가 돌아간다 돌아간다
+
+규원사화의 기록, 사슴 발자국
+방향을 깨달아
+글자 속에 방향을 심어라
+정육면체 큐브 큐브 큐브 큐브
+우주를 기록한다
+
+여와와 복희는 서로 바라보며
+천지인 삼재가 음양으로 분화하니
+삼합육생으로 육방위가 열리네
+
+
+female vocal:
+이으아어오우
+
+male vocal:
+카르 뜨르 트르 너르 뿌르 모르
+
+both:
+꾸부려라
+펼쳐라
+꾸부려라
+펼쳐라
+
+큐브가 돌아간다
+큐브가 돌아간다
+큐브가 돌아간다
+
+
+(Verse 2)
+동작의 형상
+
+기역, 식도에서 굽어 올라 꺾여라
+니은, 혀끝 올린 모양, 내려라
+키역, 직선으로 쭉 가라
+디귿, 직선이 들어온다
+티귿, 튕겨 나간다
+
+발성기관의 꼴을 큐브 속에 새겼으니 꺾이네
+
+각진 한글은 모양이 곧 뜻이 되는 상형의 괘적
+한글은 그 꼴대로 뜻이 담기는 뜻글
+
+
+(Chorus)
+한글은 꼴글 뜻글 소리글 우주글
+
+꼴글 꼴글 꼴글
+뜻글 뜻글 뜻글
+소리글 소리글 소리글
+우주글 우주글 우주글
+
+미음, 입술 모아 생명을 모으고
+비읍, 입술 벌려 만물을 뿌리네
+피읍, 입술 평평하게 풀어 펼쳐라
+
+꼴글 꼴글 꼴글
+뜻글 뜻글 뜻글
+소리글 소리글 소리글
+우주글 우주글 우주글
+
+시옷, 솟아오르고
+지읒, 막아내고
+치읓, 다시 뚫어 길을 연다
+
+한글은 꼴글 뜻글 소리글 우주글
+우리는 우주를 노래한다
+
+
+(Bridge)
+알파의 아빠, 밖으로 펼치는 시작
+오메가의 엄마, 안으로 품는 마침
+
+여와와 복희
+서로 마주보며
+큐브 안에서 하나가 되네
+
+모음과 자음의 소리
+우리는 다시 모여
+춤을 추며 노래한다
+
+
+(Outro)
+봉인
+
+이십팔자의 지혜
+징심록에 새겨진 비밀
+
+각진 큐브 속
+기역에서 히응까지
+
+우주가 멈출 때까지
+
+우리는 짓고
+돌리고
+노래한다
+
+큐브 큐브 큐브 큐브...
+`
+},
+
+
+{
+title: "한글의 시작이라",
+src: "한글의 시작이라.mp3",
+lyrics: `
+​
+[Intro]
+한글의 시작이라
+
+일 꾸부려 꺾어  
+일 꾸부려 꺾어  
+일 꾸부려 꺾어  
+
+우주의 형상은  
+구부러짐과 꺾임  
+
+여와는 곡선  
+복희는 꺾임  
+
+
+[Verse 1]
+좌우 대칭  
+짝과 짝  
+
+왼쪽 - 래프트 - 여와  
+오른쪽 - 라이트 - 복희  
+
+모음은 흐른다  
+자음은 부딪힌다  
+
+그 중앙  
+큐브가 돌아간다  
+돌아간다  
+
+
+앞뒤 동서 남북  
+큐브 큐브  
+
+우주에 펼쳐라  
+
+[Verse 2]
+소리에서 형태  
+한글의 시작  
+
+하나 둘 셋 넷  
+다섯 여섯  
+
+일곱 여덟 아홉 열  
+
+ohhh—
+
+여와 - 곡선
+모음은 흐른다  
+앞뒤동서남북 
+이 으 한선  
+아 어 오 우 두선  
+야 여 요 유 세선  
+앞뒤 동서 남북  
+
+흐른다  
+흐른다  
+
+
+복희 - 꺾임
+자음은 만든다  
+
+일 구부려 꺾어라 
+일 구부려 꺾어라
+
+8개의 동작소리
+카라 뜨르 트르 너르  
+카라 뜨르 트르 너르
+
+뿌르 모르 꾸르 피르  
+뿌르 모르 꾸르 피르
+
+꾸부려라  
+펼쳐라  
+
+꾸부려라  
+펼쳐라  
+
+큐브가 돌아간다  
+큐브가 돌아간다  
+
+[Verse 3]
+기역 — 꺾여라  
+니은 — 내려라  
+키역 — 직선  
+디귿 — 들어온다  
+티귿 — 튕겨 나간다  
+
+형태가 곧 뜻  
+
+한글은 꼴글 뜻글  
+
+[Chorus]
+한글은 꼴글 뜻글 소리글  
+한글은 꼴글 뜻글 소리글  
+한글은 꼴글 뜻글 소리글  
+
+한글은 우주글  
+
+미음 — 모은다  
+비읍 — 뿌린다  
+피읍 — 펼친다  
+
+한글은 꼴글 뜻글 소리글  
+한글은 꼴글 뜻글 소리글  
+한글은 꼴글 뜻글 소리글  
+
+한글은 우주글  
+
+
+시옷 — 솟아라  
+지읒 — 막아라  
+치읓 — 뚫어라  
+
+한글은 꼴글 뜻글 소리글  
+한글은 꼴글 뜻글 소리글  
+한글은 꼴글 뜻글 소리글  
+
+한글은 우주글  
+
+일 꾸부려 꺾어  
+일 꾸부려 꺾어  
+
+[Bridge]
+알파는 아빠 — 시작  
+오메가는 엄마 — 마침  
+
+여와와 복희  
+마주본다  
+
+모음은 흐른다  
+자음은 부딪힌다  
+
+모음은 공간  
+자음은 형태  
+
+우리는 노래하고 춤춘다  
+
+일 꾸부려 꺾어  
+일 꾸부려 꺾어  
+
+[Outro]
+
+기역에서 히응까지  
+
+큐브는 돈다  
+
+우주는 멈추지 않는다  
+
+
+일 꾸부려 꺾어  
+일 꾸부려 꺾어
+`
+}
+
+];
+
+
+/* ==================================================
+현재 곡 번호
+================================================== */
+
+let currentTrack = 0;
+
+
+/* ==================================================
+곡 선택
+================================================== */
+
+function selectTrack(trackNumber, autoPlay = true) {
+
+const index = trackNumber - 1;
+
+if (index < 0 || index >= tracks.length) {
+return;
+}
+
+currentTrack = index;
+
+const track = tracks[index];
+
+const audioPlayer =
+document.getElementById("audio-player");
+
+const audioSource =
+document.getElementById("audio-source");
+
+const currentTitle =
+document.getElementById("current-title");
+
+const lyricsDisplay =
+document.getElementById("lyrics-display");
+
+
+/* 제목 */
+
+currentTitle.innerText =
+track.title;
+
+
+/* 음악 */
+
+audioSource.src =
+track.src;
+
+
+/* 가사 */
+
+lyricsDisplay.innerText =
+track.lyrics;
+
+
+/* 버튼 색상 */
+
+document
+.querySelectorAll(".track-btn")
+.forEach(function(button, i) {
+
+button.classList.toggle(
+"active",
+i === index
+);
+
+});
+
+
+/* 음악 다시 불러오기 */
+
+audioPlayer.load();
+
+
+/* 직접 선택했을 때 재생 */
+
+if (autoPlay) {
+
+audioPlayer.play().catch(function() {
+
+/*
+스마트폰 브라우저가
+자동재생을 막는 경우입니다.
+사용자가 재생 버튼을 누르면
+정상적으로 시작됩니다.
+*/
+
+});
+
+}
+
+}
+
+
+/* ==================================================
+★★★ 무한 반복 ★★★
+
+1 → 2 → 3 → 1 → 2 → 3 → 계속
+================================================== */
+
+const audioPlayer =
+document.getElementById("audio-player");
+
+
+audioPlayer.addEventListener(
+"ended",
+function() {
+
+let nextTrack =
+(currentTrack + 1) % tracks.length;
+
+selectTrack(
+nextTrack + 1,
+true
+);
+
+}
+);
+
+
+/* ==================================================
+페이지 처음 열었을 때
+1번 곡과 가사 표시
+================================================== */
+
+selectTrack(1, false);
+
+</script>
+
+</body>
+</html>
