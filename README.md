@@ -23,5 +23,11 @@ https://shinminsu11.github.io/music/ai.html
 ​▶️아라비아
 https://shinminsu11.github.io/music/아라비아.html
 
+​▶️아라비아
+https://shinminsu11.github.io/music/아라비아1.html
+
+​▶️아라비아
+https://shinminsu11.github.io/music/아라비아2.html
+
 ​▶️기타
 https://shinminsu11.github.io/music/기타.html
