@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애초말 노래 플레이어</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Apple SD Gothic Neo', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* 이미지 영역 */
+        .image-box {
+            width: 100%;
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+        /* 탭 버튼 영역 */
+        .tab-buttons {
+            display: flex;
+            width: 100%;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #2c2c2e;
+            color: #a0a0a0;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #000;
+            box-shadow: 0 4px 10px rgba(79, 172, 254, 0.4);
+        }
+        /* 오디오 플레이어 */
+        audio {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 30px;
+        }
+        /* 가사 출력 박스 */
+        .lyrics-box {
+            width: 100%;
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 20px;
+            box-sizing: border-box;
+            max-height: 350px;
+            overflow-y: auto;
+            border: 1px solid #333;
+        }
+        .lyrics-box h3 {
+            margin-top: 0;
+            color: #4facfe;
+            font-size: 16px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+        .lyrics-content {
+            white-space: pre-line;
+            line-height: 1.6;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 이미지 표시 영역 -->
+    <div class="image-box">
+        <img id="content-image" src="a.png" alt="설계도 이미지">
+    </div>
+
+    <!-- 곡 전환 탭 버튼 -->
+    <div class="tab-buttons">
+        <button id="btn-a" class="tab-btn active" onclick="switchContent('a')">🎵 아라비아숫자 모양 1</button>
+        <button id="btn-b" class="tab-btn" onclick="switchContent('b')">🎵 아라비아숫자 모양 2</button>
+    </div>
+
+    <!-- 오디오 플레이어 -->
+    <audio id="audio-player" controls>
+        <source id="audio-source" src="a.mp3" type="audio/mp3">
+        브라우저가 오디오 태그를 지원하지 않습니다.
+    </audio>
+
+    <!-- 가사 박스 -->
+    <div class="lyrics-box">
+        <h3 id="lyrics-title">가사 - 곡 1</h3>
+        <div id="lyrics-content" class="lyrics-content">
+            <!-- 가사 내용이 여기에 들어갑니다 -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // 곡별 데이터 정의 (원하시는 가사로 수정하시면 됩니다)
+    const songData = {
+        a: {
+            image: "a.png",
+            audio: "a.mp3",
+            title: "아라비아숫자 모양 1 (비밀의 시작)",
+            lyrics: `[Verse 1]
+텅 빈 무에서 시작된 파동
+음과 양이 갈라지며 첫 대칭이 열렸네
+
+왼손과 오른손 사이에서 태동하는
+아라비아 숫자 모양이 그려지는 원리
+
+하나 둘 천이삼
+오른손 첫양 직각자의 모양 칠(7)과 왼손 첫음 컴퍼스의 모양 사(4)
+
+[Chorus]
+아라비아 숫자는 무작위가 아니어
+우주가 그린 차원의 기하학적 설계도`
+        },
+        b: {
+            image: "b.png",
+            audio: "b.mp3",
+            title: "아라비아숫자 모양 2 (쓸기자판과 태극)",
+            lyrics: `[Verse 1]
+쓱쓱 쓸어서 입력하는 쓸기자판
+그릴 수록 물 흐르듯 쓰는 자판
+
+모음은 점에서 아 ㅓ ㅗ ㅜ 야 ㅕ ㅛ ㅠ
+우주와 천부경과 아래에서 밀어서 입력하네
+
+[Chorus]
+가우익 자음은 오른쪽으로 밀어
+키역 디귿 시옷 피읍 쓱쓱 쓸어라`
+        }
+    };
+
+    function switchContent(type) {
+        const data = songData[type];
+        
+        // 이미지 변경
+        document.getElementById('content-image').src = data.image;
+        
+        // 오디오 소스 변경 및 로드
+        const audioPlayer = document.getElementById('audio-player');
+        const audioSource = document.getElementById('audio-source');
+        audioSource.src = data.audio;
+        audioPlayer.load();
+        
+        // 가사 및 제목 변경
+        document.getElementById('lyrics-title').innerText = "가사 - " + data.title;
+        document.getElementById('lyrics-content').innerText = data.lyrics;
+        
+        // 버튼 활성화 디자인 변경
+        if (type === 'a') {
+            document.getElementById('btn-a').classList.add('active');
+            document.getElementById('btn-b').classList.remove('active');
+        } else {
+            document.getElementById('btn-b').classList.add('active');
+            document.getElementById('btn-a').classList.remove('active');
+        }
+    }
+
+    // 페이지 최초 로드 시 A곡 가사 기본 입력
+    window.onload = function() {
+        document.getElementById('lyrics-content').innerText = songData.a.lyrics;
+    };
+</script>
+
+</body>
+</html>
