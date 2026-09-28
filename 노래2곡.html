@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>애초말노래 2곡</title>
+    <title>애초말 노래 플레이어</title>
     <style>
         body {
             background-color: #121212;
@@ -99,69 +99,181 @@
 <div class="container">
     <!-- 이미지 표시 영역 -->
     <div class="image-box">
-        <img id="content-image" src="아라비아1.png">
+        <img id="content-image" src="a.png" alt="설계도 이미지">
     </div>
 
     <!-- 곡 전환 탭 버튼 -->
     <div class="tab-buttons">
         <button id="btn-a" class="tab-btn active" onclick="switchContent('a')">🎵 아라비아숫자 모양 1</button>
-        <button id="btn-b" class="tab-btn" onclick="switchContent('b')">🎵 아라비아숫자 모양 2</button>
+        <button id="btn-b" class="tab-btn" onclick="switchContent('b')">🎵 쓸기자판 송</button>
     </div>
 
-    <!-- 오디오 플레이어 -->
+    <!-- 오디오 플레이어 (자동 재생 및 순차 재생 지원) -->
     <audio id="audio-player" controls>
-        <source id="audio-source" src="아라비아1.mp3" type="audio/mp3">
+        <source id="audio-source" src="a.mp3" type="audio/mp3">
         브라우저가 오디오 태그를 지원하지 않습니다.
     </audio>
 
     <!-- 가사 박스 -->
     <div class="lyrics-box">
         <h3 id="lyrics-title">가사 - 곡 1</h3>
-        <div id="lyrics-content" class="lyrics-content">
-            <!-- 가사 내용이 여기에 들어갑니다 -->
-        </div>
+        <div id="lyrics-content" class="lyrics-content"></div>
     </div>
 </div>
 
 <script>
-    // 곡별 데이터 정의 (원하시는 가사로 수정하시면 됩니다)
+    // 곡별 데이터 정의
     const songData = {
         a: {
             image: "아라비아1.png",
             audio: "아라비아1.mp3",
-            title: "아라비아숫자 모양",
-            lyrics: `[Verse 1]
-텅 빈 무에서 시작된 파동
-음과 양이 갈라지며 첫 대칭이 열렸네
+            title: "아라비아숫자 모양 1 (비밀의 시작)",
+            lyrics: `일이삼사오육칠팔구십
+아라비아 숫자의 비밀 
 
+​(Verse 1)
+꽉 찬 무에서 시작된 파동
+음과 양이 갈라지며 첫 대칭이 열렸네
+ 
 왼손과 오른손 사이에서 태동하는
 아라비아 숫자 모양이 그려지는 원리
 
 하나 둘 천이삼
-오른손 첫양 직각자의 모양 칠(7)과 왼손 첫음 컴퍼스의 모양 사(4)
+오른손 첫양 직각자의 모양 칠(7)과 왼손 첫음 콤파스의 모양 사(4)
 
-[Chorus]
-아라비아 숫자는 무작위가 아니어
-우주가 그린 차원의 기하학적 설계도`
+
+​(Chorus)
+아라비아 숫자는 무작위가 아니야
+우주가 그린 차원의 기하학적 설계도
+천이삼 지이삼 인이삼의 고리 따라
+음양으로 갈라지며 돌고 도는 태극의 엔진  
+
+​(Verse 2)
+
+셋 넷 지이삼
+동과 서는 수평으로 넓게 펼쳐저서
+좌우대칭 양태극 오(5)와 음태극 이(2)가 그려진다
+
+다섯 여섯 인이삼
+남과 북은 수직으로 솟구처
+상하대칭 양태극 구(9)와 음태극 육(6)이 그려진다
+
+​(Chorus)
+아라비아 숫자는 무작위가 아니야
+우주가 그린 차원의 기하학적 설계도
+천이삼 지이삼 인이삼의 고리 따라
+음양이 갈라지며 돌고 도는 태극의 엔진  
+
+​(Bridge)
+일곱 여덟 반양 반음
+양태극의 엮행 삼(3)과 음태극의 역행 팔(8)의 모양이 그려진다
+
+아홉 열 중심 무극
+중심이 서는 모양 일(1)
+모든 것을 어우르는 영(0)이 그려진다
+
+​(Outro)
+하나에서 열까지 뻗어 나간 천부의 소리원리 파동
+아라비아 숫자 속에 숨겨진 비밀의 문
+마침내 태극이 돌아가며 열리네
+
+태극 엔진은 멈추지 않고 돌고  돌아간다 돌아간다 돌아간다`
         },
         b: {
             image: "faxi3.png",
             audio: "face.mp3",
-            title: "아라비아숫자 모양 2 (쓸기자판과 태극)",
+            title: "서로 바라보는 소리",
             lyrics: `[Verse 1]
-쓱쓱 쓸어서 입력하는 쓸기자판
-그릴 수록 물 흐르듯 쓰는 자판
+처음엔 아무 말도 없었지
+그저 숨과 떨림뿐
+어둠 속에서 부딪힌 울림
+그중 살아남은 건 단 하나의 리듬
+소리는 흘러, 사라지고 남아
+자연과 맞는 것만 남아
+입 안에서 태어난 작은 우주
+그걸 우린 언어라 불러
 
-모음은 점에서 아 ㅓ ㅗ ㅜ 야 ㅕ ㅛ ㅠ
-우주와 천부경과 아래에서 밀어서 입력하네
+[Pre-Chorus]
+형태를 만들는 선
+직선과 곡선
+서로 다른 길 위에 서 있지만
+결국 하나를 향해 가
 
 [Chorus]
-가우익 자음은 오른쪽으로 밀어
-키역 디귿 시옷 피읍 쓱쓱 쓸어라`
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+여는 것과 닫는 것 사이
+그 틈에서 태어난 우리
+직선은 말해 “나는 경계”
+곡선은 말해 “나는 흐름”
+둘이 만나 완성되는 순간
+그게 바로 한글의 궤적
+
+[Verse 2]
+모음은 공간의 방향 좌표
+아는 열려 앞으로
+어는 반대로 안으로
+오는 솟는 숨결
+우는 아래로 가라앉는 파도
+
+자음은 경계를 나눔
+기역은 꺾이고, 
+니은은 내리고,
+비읍은 뿌리고,
+미음은 모으고, 
+선을 그어
+세상을 구조로 만든다
+
+[Pre-Chorus 2]
+모음은 흐르고 자음은 만들어
+서로 다른 두 개의 시작
+근데 같은 끝을 향해
+
+[Chorus]
+좌에서 우로, 우에서 좌로
+서로를 바라보는 소리
+남과 여, 음과 양처럼
+마주 선 두 개의 진리
+곡선은 말해 “나는 생명”
+직선은 말해 “나는 형태”
+둘이 만나 숨 쉬는 순간
+그게 바로 우리의 언어
+
+[Bridge]
+보이지 않는 입이 두 개
+서로를 향해 말하고 있어
+하나는 틀을 만들고
+하나는 그 안을 채워
+공(空) 속에서 시작된 원
+이응은 아무것도 아닌 전부
+비어 있음이 열어주는 길
+그 안에 모든 게 숨 쉬어
+
+[Break]
+흐름과 구조
+살아있는 리듬
+좌우 대칭, 서로 다른 시선
+두 개의 세계가 만든 이 시스템
+자음은 뼈대, 모음은 피
+서로가 없으면 완성은 없지
+코드처럼 돌아가는 이 구조
+
+[Final Chorus]
+좌에서 우로, 우에서 좌로
+서로를 끌어당기는 소리
+끊어진 듯 이어진 흐름
+그 안에 담긴 우리의 이야기
+직선과 곡선이 만난 자리
+시작과 끝이 겹친 순간
+그 음과 양이 하나가 될 때
+우린 미래를 말하게 돼`
         }
     };
 
-    function switchContent(type) {
+    let currentType = 'a'; // 현재 재생 중인 곡 추적용
+
+    function switchContent(type, autoPlay = false) {
+        currentType = type;
         const data = songData[type];
         
         // 이미지 변경
@@ -172,6 +284,10 @@
         const audioSource = document.getElementById('audio-source');
         audioSource.src = data.audio;
         audioPlayer.load();
+        
+        if (autoPlay) {
+            audioPlayer.play().catch(e => console.log("자동 재생 제한:", e));
+        }
         
         // 가사 및 제목 변경
         document.getElementById('lyrics-title').innerText = "가사 - " + data.title;
@@ -187,9 +303,19 @@
         }
     }
 
-    // 페이지 최초 로드 시 A곡 가사 기본 입력
+    // 오디오가 끝났을 때 자동으로 다음 곡으로 넘어가며 무한 반복
+    const audioPlayer = document.getElementById('audio-player');
+    audioPlayer.addEventListener('ended', function() {
+        if (currentType === 'a') {
+            switchContent('b', true); // a가 끝나면 b로 자동 전환 후 재생
+        } else {
+            switchContent('a', true); // b가 끝나면 다시 a로 돌아와 자동 재생 (무한 반복)
+        }
+    });
+
+    // 페이지 최초 로드 시 기본 세팅
     window.onload = function() {
-        document.getElementById('lyrics-content').innerText = songData.a.lyrics;
+        switchContent('a', false);
     };
 </script>
 
