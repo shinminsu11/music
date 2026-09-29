@@ -29,7 +29,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* 간격 조절 */
             text-align: center;
         }
         .image-box img {
@@ -38,6 +38,17 @@
             display: block;
             transition: opacity 0.3s ease;
         }
+        
+        /* 그림과 버튼 사이 안내 문구 및 여백 스타일 */
+        .guide-text {
+            width: 100%;
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 13px;
+            margin-bottom: 12px; /* 버튼과의 간격 */
+            letter-spacing: -0.5px;
+        }
+
         /* 탭 버튼 영역 */
         .tab-buttons {
             display: flex;
@@ -102,7 +113,12 @@
         <img id="content-image" src="a.png" alt="설계도 이미지">
     </div>
 
-    <!-- 곡 전환 탭 버튼 (클릭 시 바로 재생되도록 수정) -->
+    <!-- 그림과 버튼 사이 안내 문구 (원하시는 문구로 수정 가능) -->
+    <div class="guide-text">
+        ✨ 버튼을 누르면 노래와 가사가 함께 전환됩니다 ✨
+    </div>
+
+    <!-- 곡 전환 탭 버튼 -->
     <div class="tab-buttons">
         <button id="btn-a" class="tab-btn active" onclick="switchContent('a', true)">🎵 아라비아숫자 모양</button>
         <button id="btn-b" class="tab-btn" onclick="switchContent('b', true)">🎵 서로 바라보는 소리</button>
@@ -287,7 +303,6 @@
         audioSource.src = data.audio;
         audioPlayer.load();
         
-        // 버튼을 눌렀을 때(playAudio가 true일 때) 곧바로 재생 시작
         if (playAudio) {
             audioPlayer.play().catch(e => console.log("자동 재생 제한:", e));
         }
@@ -316,7 +331,7 @@
         }
     });
 
-    // 페이지 최초 로드 시 기본 세팅 (음악 자동 재생은 끄고 대기)
+    // 페이지 최초 로드 시 기본 세팅
     window.onload = function() {
         switchContent('a', false);
     };
