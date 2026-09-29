@@ -39,35 +39,36 @@
             transition: opacity 0.3s ease;
         }
 
-        /* 섹션 제목 (예: 천부 음악 3곡) */
-        .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 15px 0 10px 0;
-            color: #ffffff;
-            letter-spacing: -0.5px;
+        /* 플레이어 상단 통합 타이틀 영역 */
+        .player-header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
         }
-
-        /* 현재 재생 중인 곡 표시 문구 */
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
         .now-playing {
             font-size: 13px;
             color: #a0a0a0;
-            margin-bottom: 15px;
         }
         .now-playing span {
             color: #4facfe;
             font-weight: bold;
         }
 
-        /* 탭 버튼 영역 (버튼 개수에 맞춰 크기 자동 조절) */
+        /* 탭 버튼 영역 */
         .tab-buttons {
             display: flex;
             width: 100%;
-            gap: 8px; /* 버튼 사이 간격 */
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
         }
         .tab-btn {
-            flex: 1; /* 버튼들이 공간을 균등하게 나눠 가짐 */
+            flex: 1;
             padding: 12px 6px;
             border: none;
             border-radius: 8px;
@@ -129,18 +130,16 @@
         <img id="content-image" src="a.png" alt="설계도 이미지">
     </div>
 
-    <!-- 섹션 타이틀 -->
-    <div class="section-title">애초말 음악 플레이어</div>
+    <!-- 통합된 타이틀 및 재생 정보 영역 -->
+    <div class="player-header">
+        <div class="section-title">애초말 음악 플레이어</div>
+        <div class="now-playing">현재 재생 중 : <span id="current-song-name">아라비아숫자 모양</span></div>
+    </div>
 
-    <!-- 현재 재생 중 표시 -->
-    <div class="now-playing">현재 재생 중 : <span id="current-song-name">아라비아숫자 모양</span></div>
-
-    <!-- 곡 전환 탭 버튼 영역 (원하는 만큼 버튼을 추가·삭제해도 크기가 자동 조절됩니다) -->
+    <!-- 곡 전환 탭 버튼 영역 -->
     <div class="tab-buttons">
         <button id="btn-a" class="tab-btn active" onclick="switchContent('a', true)">🎵 아라비아숫자 모양</button>
         <button id="btn-b" class="tab-btn" onclick="switchContent('b', true)">🎵 서로 바라보는 소리</button>
-        <!-- 곡이 더 필요하면 아래처럼 버튼을 추가하시면 됩니다 -->
-        <!-- <button id="btn-c" class="tab-btn" onclick="switchContent('c', true)">🎵 세 번째 곡</button> -->
     </div>
 
     <!-- 오디오 플레이어 -->
@@ -151,13 +150,12 @@
 
     <!-- 가사 박스 -->
     <div class="lyrics-box">
-        <h3 id="lyrics-title">가사 - 곡 1</h3>
+        <h3 id="lyrics-title">가사 - 아라비아숫자 모양</h3>
         <div id="lyrics-content" class="lyrics-content"></div>
     </div>
 </div>
 
 <script>
-    // 곡별 데이터 정의 (새로운 곡을 추가할 때는 여기에 c, d 등 객체만 늘려주시면 됩니다)
     const songData = {
         a: {
             image: "아라비아1.png",
@@ -190,16 +188,14 @@
         }
     };
 
-    let currentType = 'a'; // 현재 재생 중인 곡 추적용
+    let currentType = 'a';
 
     function switchContent(type, playAudio = false) {
         currentType = type;
         const data = songData[type];
         
-        // 이미지 변경
         document.getElementById('content-image').src = data.image;
         
-        // 오디오 소스 변경 및 로드
         const audioPlayer = document.getElementById('audio-player');
         const audioSource = document.getElementById('audio-source');
         audioSource.src = data.audio;
@@ -209,18 +205,15 @@
             audioPlayer.play().catch(e => console.log("자동 재생 제한:", e));
         }
         
-        // 현재 재생 중 문구 및 제목 변경
         document.getElementById('current-song-name').innerText = data.title;
         document.getElementById('lyrics-title').innerText = "가사 - " + data.title;
         document.getElementById('lyrics-content').innerText = data.lyrics;
         
-        // 모든 버튼의 active를 끄고 선택된 버튼만 켬
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         if (type === 'a') document.getElementById('btn-a').classList.add('active');
         if (type === 'b') document.getElementById('btn-b').classList.add('active');
     }
 
-    // 오디오가 끝났을 때 순차적으로 다음 곡으로 자동 순환
     const audioPlayer = document.getElementById('audio-player');
     audioPlayer.addEventListener('ended', function() {
         if (currentType === 'a') {
@@ -230,7 +223,6 @@
         }
     });
 
-    // 페이지 최초 로드 시 기본 세팅
     window.onload = function() {
         switchContent('a', false);
     };
