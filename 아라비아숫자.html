@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애초말 음악 Player</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        /* 파란색 버튼 스타일 */
+        .play-btn {
+            background-color: #2979ff;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 15px 0 5px 0;
+            transition: background-color 0.2s;
+        }
+        .play-btn:hover {
+            background-color: #1565c0;
+        }
+        .status {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        /* 오디오 재생 바 영역 컨테이너 */
+        .audio-container {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .audio-container p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #ffb74d;
+        }
+        /* HTML5 기본 오디오 바 디자인 조정 */
+        audio {
+            width: 100%;
+            height: 40px;
+        }
+        /* 이미지 스타일 */
+        .image-container {
+            padding: 10px;
+            background-color: #1e1e1e;
+            margin-bottom: 20px;
+            max-width: 600px;
+            text-align: center;
+        }
+        .image-container img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+        /* 가사 영역 스타일 (크기 축소 및 스크롤 적용) */
+        .lyrics-box {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 500px;
+            width: 140%;
+            height: 400px;            /* 가사창 높이 고정 (원하는 크기로 조절 가능) */
+            overflow-y: auto;         /* 위아래로 내리고 올릴 수 있도록 스크롤 생성 */
+            text-align: center;
+            line-height: 1.6;
+            color: #cccccc;
+            white-space: pre-line;    /* 줄바꿈 유지 */
+            box-sizing: border-box;
+            font-size: 26px;  
+        }
+        .lyrics-title {
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 이미지 삽입 영역 -->
+    <div class="image-container">
+        <div class="lyrics-title">여덟개의 애초말동작소리</div>
+        <img src="한글원리.jpg">
+    </div>
+
+    <!-- 파란 버튼 -->
+   <button class="play-btn" id="playBtn">🎵 애초말 동작소리</button>
+   <div class="status" id="statusText">버튼을 눌러주세요</div>
+
+    <!-- 오디오 재생 바 영역 -->
+    <div class="audio-container">
+        <audio id="audioPlayer" controls loop>
+            <source src="한글원리.mp3" type="audio/mp3">
+            브라우저가 오디오 태그를 지원하지 않습니다.
+        </audio>
+    </div>
+
+    <!-- 가사 삽입 영역 (스크롤 적용) -->
+    <div class="lyrics-box">
+[제1절] 꽉 찬 무와 남녀의 태동
+​꽉 찬 무의 허공 속에 남녀가 마주 서서
+여와의 콤파스 곡선은 모음을 열고
+복희의 직각자 직선은 자음의 뼈대를 세웠네
+
+음과 양이 맞물려 소리의 씨앗이 잉태되니
+이것이 곧 만물 창조의 첫 숨결이라!
+​
+​[제2절] 하나 둘 앞뒤 대칭
+​​하나 카라 앞으로 뻗어 가는 첫 파동이여,
+둘 뜨르 안으로 들어오는 첫 숨결이라.
+
+셋넷 동서 대칭
+셋 트르서  동쪽 하늘 위로 솟구치고,
+넷 너르서 서쪽 안으로 안아 넣네.
+
+다섯 여섯 남북 대칭
+​사내가 서 타르서서 타섯
+사방으로 터뜨리는 양의 절정, 
+다섯 뿌르 뿌려라 아빠티!
+
+여자가 서 너르서서 녀섯
+중심으로 몰아 품는 음의 절정,
+여섯 모르 몰려라 어머니!
+
+앞뒤동서남북의 세개의 축
+그 완벽한 대칭 속에 생명의 뼈대가 섰네
+
+
+[제3절] 
+일곱 여덟 반양 반음 대칭
+마침내
+일곱 —
+직선이 굽이쳐 꺾여
+형태를 만드는 큐브
+반양의 일곱, 꾸르 꾸부려라
+
+여덟 —
+꼬였던 뼈대를 활짝 펼쳐 팔괘
+반음의 여덟,피르! 펼쳐라
+
+​아홉 열 중 심과 완성 
+​큰 입 ‘아’(○)로 원을 그려
+만물이 꼬불 꼬불
+아꼬불 아홉, 태극
+
+모든 경계를 허물고 엮어 여는
+열 여르, 열려라
+
+​[제4절] 
+여덟개의 동작소리 팔십개 동작소리로 분화 세계 언어의 대통합
+​세계 언어학이 풀지 못한 어원의 비밀은 한국어애초말 동작소리 고유 수사의 파동에 있다. 
+에너지가 가장 높은 상태인 한국어의 원형 소리를 복원하면 전 세계 모든 언어의 설계도가 하나로 통합된다.
+
+​여덟 개의 원초적 동작소리가 여든 개로 뻗어나가고,
+전 세계 방언과 어휘의 뿌리를 단단히 거머쥐니
+흩어졌던 인류의 모든 언어가 하나의 설계도로 마침내  완성되네!
+
+카라 뜨르 트르 너르
+뿌르 모르 꾸르 피르
+
+카라 뜨르 트르 너르
+뿌르 모르 꾸르 피르
+    </div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const statusText = document.getElementById('statusText');
+
+        // 상단 파란 버튼 클릭 시: 이미 재생 중이든 아니든 처음부터 다시 재생
+        playBtn.addEventListener('click', () => {
+            audioPlayer.currentTime = 0; // 재생 위치를 0초(처음)로 이동
+            audioPlayer.play().then(() => {
+                statusText.textContent = "처음부터 다시 재생 중";
+                playBtn.textContent = "🎵 애초말 동작소리";
+            }).catch(error => {
+                console.error("재생 실패:", error);
+                statusText.textContent = "오디오 파일을 확인해주세요.";
+            });
+        });
+
+        // 오디오 자체 재생 바를 통해 상태가 바뀔 때 텍스트 동기화
+        audioPlayer.addEventListener('play', () => {
+            statusText.textContent = "현재 재생 중 (자동 반복)";
+        });
+
+        audioPlayer.addEventListener('pause', () => {
+            statusText.textContent = "일시정지됨";
+        });
+    </script>
+
+</body>
+</html>
