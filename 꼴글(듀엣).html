@@ -1,1 +1,214 @@
-ㅇ
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한글그림</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        /* 파란색 버튼 스타일 */
+        .play-btn {
+            background-color: #2979ff;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 15px 0 5px 0;
+            transition: background-color 0.2s;
+        }
+        .play-btn:hover {
+            background-color: #1565c0;
+        }
+        .status {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        /* 오디오 재생 바 영역 컨테이너 */
+        .audio-container {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .audio-container p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #ffb74d;
+        }
+        /* HTML5 기본 오디오 바 디자인 조정 */
+        audio {
+            width: 100%;
+            height: 40px;
+        }
+        /* 이미지 스타일 */
+        .image-container {
+            padding: 10px;
+            background-color: #1e1e1e;
+            margin-bottom: 20px;
+            max-width: 600px;
+            text-align: center;
+        }
+        .image-container img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+        /* 가사 영역 스타일 (크기 축소 및 스크롤 적용) */
+        .lyrics-box {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 500px;
+            width: 140%;
+            height: 400px;            /* 가사창 높이 고정 (원하는 크기로 조절 가능) */
+            overflow-y: auto;         /* 위아래로 내리고 올릴 수 있도록 스크롤 생성 */
+            text-align: center;
+            line-height: 1.6;
+            color: #cccccc;
+            white-space: pre-line;    /* 줄바꿈 유지 */
+            box-sizing: border-box;
+            font-size: 26px;  
+        }
+        .lyrics-title {
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 이미지 삽입 영역 -->
+    <div class="image-container">
+        <div class="lyrics-title">한글원리</div>
+        <img src="한글그림.png">
+    </div>
+
+    <!-- 파란 버튼 -->
+   <button class="play-btn" id="playBtn">🎵 한글은 꼴글 뜻글 소리글</button>
+   <div class="status" id="statusText">버튼을 눌러주세요</div>
+
+    <!-- 오디오 재생 바 영역 -->
+    <div class="audio-container">
+        <audio id="audioPlayer" controls loop>
+            <source src="꼴글(듀엣).mp3" type="audio/mp3">
+            브라우저가 오디오 태그를 지원하지 않습니다.
+        </audio>
+    </div>
+
+    <!-- 가사 삽입 영역 (스크롤 적용) -->
+    <div class="lyrics-box">
+[Intro]
+한글의 탄생
+그 꼴대로 그 뜻이 담긴다
+소리에서 형태로, 형태에서 글자로—잠들었던 우주가 깨어난다!
+
+​[Verse 1]
+동과 서의 문이 열린다
+서양의 프리메이슨, 교차된 직각자와 컴퍼스
+동양의 여와 콤파스와 복희 직각자
+좌측의 여와, 컴퍼스를 쥐고 복희를 바라보며 곡선 모음을 펼쳐라
+우측의 복희, 직각자를 들고 여와를 바라보며 직선 자음을 갈라라
+모음은 중심에서 좌표를 세우고
+자음은 형태를 이루어 육면체를 만든다
+
+​[Verse 2]
+한글은 그 꼴대로 뜻이 담기는 꼴글! 뜻글! 소리글!
+굽은 식도에서 기억(ㄱ)은 곡선의 뜻
+혀끝 내려 니은(ㄴ)은 내림의 뜻
+입술 모아 미음(ㅁ)은 모임의 뜻
+입술 벌려 비읍(ㅂ)은 벌려 뿌려의 뜻
+입술 평평하게 피읖(ㅍ)은 평평함의 뜻
+
+​한글은 꼴글! 뜻글! 소리글!
+한글은 꼴글! 뜻글! 소리글! 우주글!
+우주를 움직이는 절대 OS!
+
+​[Verse 3]
+손과 손이 만난다, 음과 양이 합쳐진다!
+한국어 수사 속에 숨어 있던 여덟 개의 애초말 동작소리
+
+​하나, 앞으로 가라 — 카라
+둘, 뒤로 들어라 — 뜨르
+셋, 동쪽의 — 트르
+넷, 서쪽의 — 너르
+다섯, 남쪽의 뿌르 — 아빠티
+여섯, 북쪽의 모르 — 어머니
+일곱, 큐브 구부려 꺾는 — 꾸르
+여덟, 팔괘 피고 펼치는 — 피르
+​아홉, 태극 중심에서 돌리고
+열, 모음은 소리를 엮어서 흐르게 한다
+
+​여덟 개의 애초말 동작소리, 잠들었던 우주를 깨워라!
+
+카라 뜨르 트르 너르 | 뿌르 모르 꾸르 피르
+카라 뜨르 트르 너르 | 뿌르 모르 꾸르 피르
+
+​[Verse 4]
+한글은 그 꼴대로 뜻이 담기는 꼴글! 뜻글! 소리글!
+​솟구치는 모양 시옷(ㅅ)은 솟다의 뜻
+솟구침이 막히는 모양 지읒(ㅈ)은 솟음 막힘의 뜻
+다시 솟는 모양 치읓(ㅊ)은 처음 솟는 뜻
+
+잠들었던 우주가 깨어난다!
+​한글은 꼴글! 뜻글! 소리글!
+한글은 꼴글! 뜻글! 소리글! 우주글!
+우주를 움직이는 절대 OS!
+
+​[Outro]
+소리에서 형태가 되고, 형태에서 글자가 된다!
+한글은 꼴글! 뜻글! 소리글!
+한글은 꼴글! 뜻글! 소리글! 우주글!
+한글은 꼴글! 뜻글! 소리글! 우주글!
+​[End]
+    </div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const statusText = document.getElementById('statusText');
+
+        // 상단 파란 버튼 클릭 시: 이미 재생 중이든 아니든 처음부터 다시 재생
+        playBtn.addEventListener('click', () => {
+            audioPlayer.currentTime = 0; // 재생 위치를 0초(처음)로 이동
+            audioPlayer.play().then(() => {
+                statusText.textContent = "처음부터 다시 재생 중";
+                playBtn.textContent = "🎵 한글은 꼴글 뜻글 소리글";
+            }).catch(error => {
+                console.error("재생 실패:", error);
+                statusText.textContent = "오디오 파일을 확인해주세요.";
+            });
+        });
+
+        // 오디오 자체 재생 바를 통해 상태가 바뀔 때 텍스트 동기화
+        audioPlayer.addEventListener('play', () => {
+            statusText.textContent = "현재 재생 중 (자동 반복)";
+        });
+
+        audioPlayer.addEventListener('pause', () => {
+            statusText.textContent = "일시정지됨";
+        });
+    </script>
+
+</body>
+</html>
