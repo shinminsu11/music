@@ -19,6 +19,8 @@ https://shinminsu11.github.io/music/sori.html
 
 ▶️설계도 https://shinminsu11.github.io/music/설계도.html
 
+▶️꼴글 https://shinminsu11.github.io/music/한글꼴글.html
+
 ​▶️ai
 https://shinminsu11.github.io/music/ai.html
 
