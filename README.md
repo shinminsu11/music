@@ -17,6 +17,8 @@ https://shinminsu11.github.io/music/sori.html
 
 ▶️천부의 율려 https://shinminsu11.github.io/music/yulre.html
 
+▶️설계도 https://shinminsu11.github.io/music/설계도.html
+
 ​▶️ai
 https://shinminsu11.github.io/music/ai.html
 
